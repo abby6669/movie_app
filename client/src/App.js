@@ -1,5 +1,4 @@
 import './App.css';
-import Card from './components/Card';
 
 function App() {
   return (
@@ -10,7 +9,6 @@ function App() {
         <h1>Hola desde Movie App! 🍿</h1>
       </header>
     </div>
-    <Card/>
     </>
 
   );
