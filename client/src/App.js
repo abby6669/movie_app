@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Card from './components/Card';
 import Login from './components/Login';
 import Navegacion from './components/Navbar';
 import Footer from './components/Footer';
@@ -12,6 +13,9 @@ function App() {
     <div>
       <header>
         <h1>Hola desde Movie App! 🍿</h1>
+      </header>
+    </div>
+    <Card/>
         <Navegacion />
         <br></br>
         <div>
