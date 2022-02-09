@@ -53,6 +53,3 @@ function App() {
 }
 
 export default App;
-//git checkout -b components/carousel
-
-// //instale yarn add react-icons
