@@ -1,0 +1,21 @@
+.Itemcontainer{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 300px;
+  width: 95%;
+  background-color: #af2e58;
+  color: #fff;
+  margin-left: 40px;
+  font-size: 30px;
+  border-radius:10px
+
+}
+
+.movie {
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
