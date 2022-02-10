@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Spinner } from 'react-bootstrap';
-import Navbar from '../components/Navbar';
+import Navegacion from '../components/Navbar';
 import MovieCard from '../components/MovieCard';
 import Footer from '../components/Footer';
 import { Pagination } from 'react-bootstrap';
@@ -43,13 +43,19 @@ function Movies(props) {
     if (loading) {
         return (
             <>
-                <Navbar />  
+
+                <header>
+                <Navegacion />  
+                </header>
+                 
+
                 <div className="d-flex justify-content-center p-5">
                     <Spinner className="m-5" animation="border" variant="primary" role="status" size="lg" />
                 </div>
                 <div className="movies-pagination d-flex justify-content-center">
                     <Pagination>{paginationItems}</Pagination>
                 </div>
+
                 <Footer />
             </>
             );
@@ -58,7 +64,13 @@ function Movies(props) {
     
     return (
     <>
-        <Navbar />  
+        <header>
+
+        <Navegacion />
+
+        </header>
+        
+
         <h2> Se encontraron {movies.length} peliculas </h2>
         <div className="movies-container">
             {movies.map(movie => {
@@ -74,6 +86,7 @@ function Movies(props) {
         <div className="movies-pagination d-flex justify-content-center">
             <Pagination>{paginationItems}</Pagination>
         </div>
+
         <Footer />
     </>
     );
