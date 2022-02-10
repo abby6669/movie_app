@@ -11,3 +11,8 @@ footer {
     align-items: center;
     position: absolute;
 }
+.body { 
+    background: black;
+    color: white;
+}
+

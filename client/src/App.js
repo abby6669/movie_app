@@ -1,10 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Card from './components/Card';
-import Login from './components/Login';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import { MovieGrid } from './components/MovieGrid';
+import Profile from './components/Profile';
+
 
 function App() {
   return (
@@ -15,11 +15,23 @@ function App() {
       <header>
         <h1>Hola desde Movie App! 🍿</h1>
       </header>
+      <body class="body">
+
+        <div>
+        
+
+        </div>
+
+        
+
+      </body>
+
+      <footer>
+        <Footer />
+      </footer>
     </div>
-    <Card/>
-    <MovieGrid />
-    <Login/>
-    <Footer />
+    < Profile />
+    
     </>
 
   );
