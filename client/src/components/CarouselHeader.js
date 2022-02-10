@@ -3,7 +3,7 @@ import {Carousel} from 'react-bootstrap/'
  import SegundaPortada from './Images/SegundaPortada.png'
  import TerceraPortada from './Images/TerceraPortada.png'
  import Venom from './Images/Venom.jpg'
- import './App.css'
+ 
 
 function CarouselHeader() {
   return (
