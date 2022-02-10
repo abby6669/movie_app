@@ -1,12 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import Movies from './views/Movies';
+import Profile from './views/Profile';
 
 function App() {
   return (
 
     <>
-    <Movies />
+    <Profile />
     </>
 
   );
