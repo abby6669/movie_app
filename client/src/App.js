@@ -3,35 +3,22 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Profile from './components/Profile';
+import Carousel from './components/Carousel';
 
 function App() {
   return (
 
     <>
     <Navbar />
-    <div>
+    <Carousel />
+    {/* <div>
       <header>
         <h1>Hola desde Movie App! 🍿</h1>
       </header>
-      <body class="body">
-
-        <div>
-        
-
-        </div>
-
-        
-
-      </body>
-
-      <footer>
-        <Footer />
-      </footer>
-    </div>
-    < Profile />
-    
+    </div>   */}
+    <Footer />
+    {/* <Profile /> */}
     </>
-
   );
 }
 
