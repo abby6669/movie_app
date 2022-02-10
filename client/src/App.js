@@ -1,12 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import Register from './views/Register'
+import Movies from './views/Movies';
 
 function App() {
   return (
-
     <>
-    <Register />
+    <Movies />
     </>
   );
 }
