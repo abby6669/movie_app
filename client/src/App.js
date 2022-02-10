@@ -4,11 +4,9 @@ import Movies from './views/Movies';
 
 function App() {
   return (
-
     <>
     <Movies />
     </>
-
   );
 }
 
