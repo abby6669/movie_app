@@ -97,6 +97,7 @@ function Movies(props) {
     );
 }
 
+export default Movies;
   
 //     const renderMovies = () => {
 //       if (movies.length === 0) {
@@ -133,4 +134,3 @@ function Movies(props) {
 //     )
 // }
 
-export default Movies;
