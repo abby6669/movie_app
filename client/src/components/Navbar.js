@@ -2,6 +2,7 @@ import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 
 export function Navegacion() {
     return (
+      <header>
 
         <Navbar bg="light" expand="lg">
   <Container>
@@ -22,6 +23,11 @@ export function Navegacion() {
     </Navbar.Collapse>
   </Container>
 </Navbar>
+
+</header>
+
+
+
 
     );
 }
