@@ -11,7 +11,6 @@ router.get('/users/:id');
 
 // Update - PUT/PATCH
 router.put('/users/:id');
-router.patch('/users/:id');
 
 // Delete - DELETE
 router.delete('/users/:id');

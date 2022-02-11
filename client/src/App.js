@@ -1,27 +1,24 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './views/Login';
 import Movies from './views/Movies';
 import Profile from './views/Profile';
 import Register from './views/Register';
 import UpdateProfile from './views/UpdateProfile';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
+import './App.css';
 
 function App() {
   return (
     <>
-    <Movies />
-
-    {/* <Router>
+    {/* <Movies /> */}
+    <Router>
         <Routes>
-          <Route exact path="/" component={ Movies }/>
-          <Route exact path="/profile" component={ Profile }/>
-          <Route exact path="/update-profile" component={ UpdateProfile }/>
-          <Route path="/register" component={ Register } />
-          <Route path="/login" component={ Login } />
+          <Route exact path="/" element={ <Movies /> }/>
+          <Route exact path="/profile" element={ <Profile /> }/>
+          <Route exact path="/update-profile" element={ <UpdateProfile /> }/>
+          <Route path="/register" element={ <Register /> } />
+          <Route path="/login" element={ <Login /> } />
         </Routes>
-      </Router> */}
+      </Router>
     </>
   );
 }

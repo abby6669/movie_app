@@ -6,7 +6,6 @@ import CarouselHeader from '../components/CarouselHeader'
 import MovieCard from '../components/MovieCard';
 import Footer from '../components/Footer';
 import { Pagination } from 'react-bootstrap';
-// import { render } from "react-dom";
 
 function Movies(props) {
     const [movies, setMovies] = useState([])
@@ -27,7 +26,7 @@ function Movies(props) {
         );
     }
 
-        // Mandando llamar API
+    // Mandando llamar API
     const getMovies = () => {
         setLoading(true)
         setTimeout(() => {
@@ -45,48 +44,41 @@ function Movies(props) {
     if (loading) {
         return (
             <>
-
-
-                <Navegacion />                 
-                <div className="d-flex justify-content-center p-5">
-                    <Spinner className="m-5" animation="border" variant="primary" role="status" size="lg" />
-                </div>
-                <div className="movies-pagination d-flex justify-content-center">
-                    <Pagination>{paginationItems}</Pagination>
-                </div>
+                <Navegacion />  
+                <CarouselHeader />               
+                    <div className="d-flex justify-content-center p-5">
+                        <Spinner className="m-5" animation="border" variant="primary" role="status" size="lg" />
+                    </div>
+                    <div className="movies-pagination d-flex justify-content-center">
+                        <Pagination>{paginationItems}</Pagination>
+                    </div>
                 <Footer />
             </>
-            );
-         
+        );
     }
-    // const rootElement = document.getElementById("./");
 
     return (
-    <>
-    <div>
-    <Navegacion />
-    <CarouselHeader />
-    </div>
-        <h2> Se encontraron {movies.length} peliculas </h2>
-        <div className="movies-container">
-            {movies.map(movie => {
-                return (
-                    <div className="display-flex">
-                    <MovieCard 
-                        image={ movie.poster_path} 
-                    />
-                    </div>
-                );
-            })}
-        </div>
-        <div className="movies-pagination d-flex justify-content-center">
-            <Pagination>{paginationItems}</Pagination>
-        </div>
+        <>
+        <Navegacion />
+        <CarouselHeader />
+            <h2> Se encontraron {movies.length} peliculas </h2>
+            <div className="movies-container">
+                {movies.map(movie => {
+                    return (
+                        <div className="display-flex">
+                        <MovieCard 
+                            image={ movie.poster_path} 
+                        />
+                        </div>
+                    );
+                })}
+            </div>
+            <div className="movies-pagination d-flex justify-content-center">
+                <Pagination>{paginationItems}</Pagination>
+            </div>
         <Footer />
-    </>
+        </> 
     );
-
 }
-// render(<App />, rootElement);
 
 export default Movies;
