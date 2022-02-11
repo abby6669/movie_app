@@ -44,9 +44,11 @@ function Movies(props) {
         return (
             <>
 
-                <header>
+
                 <Navegacion />  
-                </header>
+
+                <br></br>
+
                  
 
                 <div className="d-flex justify-content-center p-5">
@@ -64,11 +66,14 @@ function Movies(props) {
     
     return (
     <>
-        <header>
 
-        <Navegacion />
+    <div>
 
-        </header>
+    <Navegacion />
+
+    </div>
+
+
         
 
         <h2> Se encontraron {movies.length} peliculas </h2>

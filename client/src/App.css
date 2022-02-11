@@ -51,12 +51,6 @@ body {
     
 }
 
-.body { 
-    background: black;
-    color: white;
-    
-}
-
 .rotate {
     width: 200px;
     height: 200px;
@@ -71,3 +65,4 @@ body {
       transform: rotate(359deg);
     }
   }
+

@@ -12,7 +12,7 @@ const Footer = () => <footer className="page-footer font-small blue pt-4">
             <hr className="clearfix w-100 d-md-none pb-0"/>
 
             <div className="col-md-3 mb-md-0 mb-3">
-                <h5 className="text-uppercase">Enlaces</h5>
+                <h5 className="text-uppercase">Paginas</h5>
                 <ul className="list-unstyled">
                     <li><a href="#!">Home</a></li>
                     <li><a href="#!">Perfil</a></li>
