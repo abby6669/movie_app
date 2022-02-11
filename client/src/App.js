@@ -1,11 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import Movies from './views/Movies';
+import IndividualMovie from './views/IndividualMovie';
 
 function App() {
   return (
     <>
-    <Movies />
+    <IndividualMovie />
     </>
   );
 }
