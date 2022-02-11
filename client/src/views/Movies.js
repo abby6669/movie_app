@@ -6,6 +6,7 @@ import CarouselHeader from '../components/CarouselHeader'
 import MovieCard from '../components/MovieCard';
 import Footer from '../components/Footer';
 import { Pagination } from 'react-bootstrap';
+// import { render } from "react-dom";
 
 function Movies(props) {
     const [movies, setMovies] = useState([])
@@ -58,10 +59,10 @@ function Movies(props) {
             );
          
     }
-    
+    // const rootElement = document.getElementById("./");
+
     return (
     <>
-
     <div>
     <Navegacion />
     <CarouselHeader />
@@ -81,10 +82,11 @@ function Movies(props) {
         <div className="movies-pagination d-flex justify-content-center">
             <Pagination>{paginationItems}</Pagination>
         </div>
-
         <Footer />
     </>
     );
+
 }
+// render(<App />, rootElement);
 
 export default Movies;

@@ -10,12 +10,12 @@ export function Navegacion() {
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#link">Peliculas</Nav.Link>
+        <Nav.Link Link to="/">Home</Nav.Link>
+        <Nav.Link Link to="/">Peliculas</Nav.Link>
         <NavDropdown title="Perfil" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">Perfil</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Login</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Registrate</NavDropdown.Item>
+          <NavDropdown.Item Link to="/profile">Perfil</NavDropdown.Item>
+          <NavDropdown.Item Link to="/login">Login</NavDropdown.Item>
+          <NavDropdown.Item Link to="/register">Registrate</NavDropdown.Item>
           
         </NavDropdown>
       </Nav>

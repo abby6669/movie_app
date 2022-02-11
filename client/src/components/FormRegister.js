@@ -1,5 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-// import './formStyle.css'
+import '../formStyle.css'
 
 const validate = (values) => {
  const errors={}
