@@ -1,6 +1,6 @@
 import { Card, Button } from 'react-bootstrap';
 
-function Cards(props) {
+function MovieCard(props) {
     const { image } = props;
 
     return (
@@ -13,4 +13,4 @@ function Cards(props) {
     )
 }
 
-export default Cards
+export default MovieCard
