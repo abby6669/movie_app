@@ -4,7 +4,7 @@ export function Navegacion() {
     return (
       <header>
 
-        <Navbar bg="dark" expand="lg">
+        <Navbar bg="dark" expand="lg" >
   <Container>
     <Navbar.Brand href="#home">Super Movies</Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
