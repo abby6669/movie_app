@@ -21,8 +21,7 @@ footer {
 @keyframes AnimationName {
     0%{background-position:0% 88%}
     50%{background-position:100% 13%}
-    100%{background-position:0% 88%}
-    
+    100%{background-position:0% 88%} 
 }
 
 .movie-card {
@@ -46,9 +45,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    
-    
+    position: absolute;    
 } */
 
 .rotate {
@@ -65,6 +62,3 @@ footer {
       transform: rotate(359deg);
     }
   }
-
-
-

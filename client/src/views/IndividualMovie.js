@@ -1,16 +1,16 @@
 import Navbar from '../components/Navbar';
+import MovieCard from '../components/MovieCard'
 import Footer from '../components/Footer';
-import ProfileCard from '../components/ProfileCard';
 
-function Profile() {
+function IndividualMovie() {
   
   return (
     <>
     <Navbar />
-    <ProfileCard /> 
+    <MovieCard />
     <Footer />
     </>
   );
 }
 
-export default Profile;
+export default IndividualMovie;

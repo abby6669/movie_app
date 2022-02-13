@@ -4,15 +4,17 @@ import Movies from './views/Movies';
 import Profile from './views/Profile';
 import Register from './views/Register';
 import UpdateProfile from './views/UpdateProfile';
+import IndividualMovie from './views/IndividualMovie';
 import './App.css';
 
 function App() {
   return (
     <>
-    {/* <Movies /> */}
+
     <Router>
         <Routes>
           <Route exact path="/" element={ <Movies /> }/>
+          <Route exact path="/individual-movie" element={ <IndividualMovie /> }/>
           <Route exact path="/profile" element={ <Profile /> }/>
           <Route exact path="/update-profile" element={ <UpdateProfile /> }/>
           <Route path="/register" element={ <Register /> } />
