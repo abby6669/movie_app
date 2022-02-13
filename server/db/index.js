@@ -1,5 +1,6 @@
-const mongoose = require('mongoose')
 require('dotenv').config();
+const mongoose = require('mongoose')
+
 const MONGODB_DATABASE_USERNAME = process.env.MONGODB_DATABASE_USERNAME;
 const MONGODB_DATABASE_PASSWORD = process.env.MONGODB_DATABASE_PASSWORD;
 const MONGODB_DATABASE_HOSTNAME = process.env.MONGODB_DATABASE_HOSTNAME;

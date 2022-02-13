@@ -1,7 +1,32 @@
-const createUser = (req, res) => {
-    res.status(200)
-    res.send( 'Hola desde Crear Usuario' )
-}
+const { AuthModel } = require('../models');
+
+const createUser = async (req, res) => {
+    const { email, password } = req.body;
+    // si no existen, retornar y responder con mensaje de error
+    if (!email || !password) {
+      return res.status(400).send({ message: 'Ingresa email y password' });
+    }
+  
+    try {
+      // buscar email en base de datos para validar que existe
+      const emailExists = await AuthModel.findOne({ email });
+      // // si ya existe, retornar y responder con mensaje de error
+      if (emailExists) {
+        return res
+          .status(400)
+          .send({ message: 'Ya existe un usario con ese correo' });
+      }
+  
+      // ya validado el email, crear usuario y responder
+      const body = { email, password };
+      const newUser = await AuthModel.create(body);
+      return res.status(201).send({ message: 'Usuario creado!', user: newUser });
+    } catch (err) {
+      return res
+        .status(400)
+        .send({ message: 'Error creando usuario!', error: err.message });
+    }
+};
 
 const loginUser = (req, res) => {
     res.status(200)

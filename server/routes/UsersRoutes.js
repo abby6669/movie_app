@@ -3,8 +3,6 @@ const router = express.Router();
 const { UsersController, AuthController, LikesController, CommentsController, WatchedController } = require('../controllers')
 
 // CRUD USUARIOS
-// Create - POST
-// router.post('/users');
 
 // Read - GET
 router.get('/users', UsersController.getAllUsers);

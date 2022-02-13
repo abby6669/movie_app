@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const db = require('../db');
 
 // AUTH SCHEMA
 const authSchema = new Schema({
@@ -24,7 +23,7 @@ const authSchema = new Schema({
 
 
   // CREANDO EL MODELO CON BASE AL SCHEMA CREADO
-const AuthModel = mongoose.model('authModel', authSchema);
+const AuthModel = mongoose.model('AuthModel', authSchema);
 
 // EXPORTAR MODELO PARA SU USO
 module.exports = AuthModel;

@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const { UsersModel } = require('.');
+const mongoose = require('../db');
 const { Schema } = mongoose;
 
 // PRODUCT SCHEMA
