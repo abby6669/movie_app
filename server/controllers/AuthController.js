@@ -1,4 +1,4 @@
-const { AuthModel } = require('../models');
+// const { AuthModel } = require('../models');
 
 const createUser = async (req, res) => {
     const { email, password } = req.body;
@@ -6,7 +6,7 @@ const createUser = async (req, res) => {
     if (!email || !password) {
       return res.status(400).send({ message: 'Ingresa email y password' });
     }
-  
+
     try {
       // buscar email en base de datos para validar que existe
       const emailExists = await AuthModel.findOne({ email });
@@ -16,7 +16,7 @@ const createUser = async (req, res) => {
           .status(400)
           .send({ message: 'Ya existe un usario con ese correo' });
       }
-  
+
       // ya validado el email, crear usuario y responder
       const body = { email, password };
       const newUser = await AuthModel.create(body);
@@ -42,7 +42,7 @@ const logoutUser = (req, res) => {
     res.status(200)
     res.send( 'Hola desde Logout user' )
 }
- 
+
 module.exports = { createUser, loginUser, updateUser, logoutUser }
 
 
