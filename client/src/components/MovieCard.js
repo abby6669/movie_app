@@ -6,7 +6,9 @@ function MovieCard(props) {
 
     return (
         <Card className="movie-card">
+            <Link to="/individual-movie">
             <Card.Img src={`https://image.tmdb.org/t/p/original/${image}`}/>
+            </Link>
             <Card.Body>
                 <Button variant="outline-primary">Like</Button>
                 <Link style={{ fontSize: "14px" }} to="/individual-movie">Detalles</Link>
