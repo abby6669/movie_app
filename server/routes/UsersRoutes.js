@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const { AuthController } = require('../controllers');
+const { UsersController } = require('../controllers');
 
 // AUTH Usuarios
 // Register - POST /register
-router.post('/register', AuthController.register);
+router.post('/register', UsersController.create);
 
 // Login - POST /login
-router.post('/login', AuthController.login);
+router.post('/login', UsersController.login);
 
 // Leer todos - GET /:id
 
