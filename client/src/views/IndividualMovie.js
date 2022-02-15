@@ -1,5 +1,5 @@
 import Navbar from '../components/Navbar';
-import MovieCard from '../components/MovieCard'
+import MovieInfo from '../components/MovieInfo'
 import Footer from '../components/Footer';
 
 function IndividualMovie() {
@@ -7,7 +7,7 @@ function IndividualMovie() {
   return (
     <>
     <Navbar />
-    <MovieCard />
+    <MovieInfo />
     <Footer />
     </>
   );
