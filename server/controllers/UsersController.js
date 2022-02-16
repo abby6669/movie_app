@@ -57,12 +57,11 @@ const findById = async (req, res) => {
           .send({ message: 'Error al traer usuario!', error: err.message });
     };
 }
-
+// No SALE REVISAAAAR!!!
 const findByIdAndUpdate = async (req, res) => {
     try{
-        const { body } = req;
         const { id } = req.params;
-        const updatedUser = await UsersModel.findByIdAndUpdate(id, body)
+        const updatedUser = await UsersModel.findByIdAndUpdate(id)
         if (!updatedUser || !id) {
             return res.status(404).send({ message: 'Usuario no encontrado' });
         } 

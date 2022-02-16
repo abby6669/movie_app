@@ -1,11 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const { CommentsController } = require('../controllers');
+
 // URLS Comments
-//Create like - POST
+
+//Read all comment - POST
+router.get('/', CommentsController.readComment);
+
+//Create comment - POST
 router.post('/', CommentsController.createComment);
 
-// Delete Like - DELETE
+// Update comment
+router.put('/:id', CommentsController.updateComment)
+
+// Delete comment - DELETE
 router.delete('/:id', CommentsController.deleteComment);
 
 module.exports = router;
