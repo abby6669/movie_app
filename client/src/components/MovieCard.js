@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom';
 
 function MovieCard(props) {
     const { id, poster_path, original_title } = props;
-    console.log(props)
 
     return (
         <Card className="movie-card">
-            <Link to="/individual-movie">
+            <Link to={`/movies/${id}`}>
                 <Card.Img src={`https://image.tmdb.org/t/p/original/${poster_path}`}/>
             </Link>
             <Card.Body className="d-flex flex-wrap" >

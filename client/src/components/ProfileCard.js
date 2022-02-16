@@ -1,4 +1,4 @@
-import {Card, Img, Button} from 'react-bootstrap';
+import {Card, Button} from 'react-bootstrap';
 import Foto from "./Perfil.jpeg";
 
 
