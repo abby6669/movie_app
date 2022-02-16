@@ -13,7 +13,7 @@ function App() {
     <Router>
         <Routes>
           {/* <Route exact path="/" element={ <Homepage /> }/> */}
-          <Route exact path="/movies" element={ <Movies /> }/>
+          <Route exact path="/" element={ <Movies /> }/>
           <Route exact path="/movies/:id" element={ <MovieDetails /> }/>
           <Route exact path="/profile" element={ <Profile /> }/>
           <Route exact path="/update-profile" element={ <UpdateProfile /> }/>

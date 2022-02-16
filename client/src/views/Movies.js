@@ -61,17 +61,13 @@ function Movies(props) {
         <>
         <Navegacion />
         <CarouselHeader />
-            <h2> Se encontraron {movies.length} peliculas </h2>
+            <h2 className="display-3 text-center my-5"> Las {movies.length} películas más populares </h2>
             <div className="movies-container">
-                {movies.map(movie => {
-                    return (
-                        <div className="display-flex">
-                        <MovieCard 
-                            image={ movie.poster_path} 
-                        />
-                        </div>
-                    );
-                })}
+                {movies.map(movie =>(
+                    <div className="display-flex">
+                    <MovieCard {...movie}/>
+                    </div>
+                ))}
             </div>
             <div className="movies-pagination d-flex justify-content-center">
                 <Pagination>{paginationItems}</Pagination>
