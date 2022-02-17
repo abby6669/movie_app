@@ -1,9 +1,9 @@
 import Navbar from '../components/Navbar';
-import RegisterForm from '../components/FormRegister'
+import RegisterForm from '../components/RegisterForm'
 import Footer from '../components/Footer';
 
 function Register() {
-  
+
   return (
     <>
     <Navbar />

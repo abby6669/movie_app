@@ -1,18 +1,24 @@
 const express = require('express');
-const router = express();
+const router = express.Router();
+const { UsersController } = require('../controllers');
 
-// CRUD USUARIOS
-// Create - POST
-router.post('/users');
+// AUTH Usuarios
+// Register - POST /register
+router.post('/register', UsersController.create);
 
-// Read - GET
-router.get('/users');
-router.get('/users/:id');
+// Login - POST /login
+router.post('/login', UsersController.login);
 
-// Update - PUT/PATCH
-router.put('/users/:id');
+// Leer todos - GET /
+router.get('/', UsersController.findAll);
 
-// Delete - DELETE
-router.delete('/users/:id');
+// Leer uno - GET /:id
+router.get('/:id', UsersController.findById);
+
+// Actualizar - PUT /:id
+router.put(':/id', UsersController.findByIdAndUpdate);
+
+// Borrar - DELETE /:id
+router.delete('/:id', UsersController.findByIdAndDelete);
 
 module.exports = router;

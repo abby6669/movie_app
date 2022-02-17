@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useAuth } from '../contexts/AuthContext';
 import axios from 'axios';
 import { Spinner } from 'react-bootstrap';
 import Navegacion from '../components/Navbar';
@@ -11,6 +12,7 @@ function Movies(props) {
     const [movies, setMovies] = useState([])
     const [pageNumber, setPageNumber] = useState(1)
     const [loading, setLoading] = useState(false)
+    const { login } = useAuth()
 
     const handlePageNumber = (number) =>{
         setPageNumber(number)
@@ -40,6 +42,7 @@ function Movies(props) {
     };
     
     useEffect(() => getMovies(), []);
+    useEffect(() => login(), []);
 
     if (loading) {
         return (
@@ -56,22 +59,20 @@ function Movies(props) {
             </>
         );
     }
-
+    console.log(movies)
     return (
         <>
         <Navegacion />
         <CarouselHeader />
             <h2> Se encontraron {movies.length} peliculas </h2>
             <div className="movies-container">
-                {movies.map(movie => {
-                    return (
-                        <div className="display-flex">
-                        <MovieCard 
-                            image={ movie.poster_path} 
-                        />
-                        </div>
-                    );
-                })}
+                {movies && movies.map(movie => (
+                    movie && <MovieCard
+                        key={movie.id} 
+                        id={movie.id}
+                        image={ movie.poster_path} 
+                    />
+                ))}
             </div>
             <div className="movies-pagination d-flex justify-content-center">
                 <Pagination>{paginationItems}</Pagination>
