@@ -4,6 +4,7 @@ import Login from './views/Login';
 import Movies from './views/Movies';
 import Profile from './views/Profile';
 import Register from './views/Register';
+import MovieDetails from './views/MovieDetails';
 import UpdateProfile from './views/UpdateProfile';
 import './App.css';
 
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={ <Movies /> }/>
             <Route exact path="/profile" element={ <Profile /> }/>
+            <Route exact path="/movies/:id" element={ <MovieDetails /> }/>
             <Route exact path="/update-profile" element={ <UpdateProfile /> }/>
             <Route path="/register" element={ <Register /> } />
             <Route path="/login" element={ <Login /> } />

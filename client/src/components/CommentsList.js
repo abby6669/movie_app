@@ -19,7 +19,7 @@ function CommentsList() {
 
   return (
     <div style={{ marginBottom: '10em' }}>
-      <h3 className="display-5 my-5">Comentarios:</h3>
+      <h3 className="display-5 my-5 ms-5">Comentarios:</h3>
       {
         // currentCommentsList.map(comment => (
           <CommentCard id={'001'} title={'Hola'} />

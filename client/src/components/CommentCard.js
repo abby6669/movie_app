@@ -1,18 +1,21 @@
-import { Button, Card } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 
 function CommentCard(props) {
 //   const { id, title, content, createdAt } = props;
 
   return (
       <>      
-        <Card className="w-25 mt-2 mb-10">
-        <Card.Body>
-            <Card.Title className="d-flex justify-content-between align-items-center">{ 'title' } </Card.Title>
-            <Card.Text>{ 'content' }</Card.Text>
-            {/* <Button className="w-100" size="sm">Editar comentario</Button> */}
-        </Card.Body>
-        <Card.Footer className="text-muted small">{ 'createdAt' }</Card.Footer>
-        </Card>
+        <Form className="ms-5 w-50">
+          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Label>Título</Form.Label>
+            <Form.Control type="email" placeholder="name@example.com" />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Label>Contenido</Form.Label>
+            <Form.Control as="textarea" rows={3} />
+          </Form.Group>
+          <Button>Enviar comentario</Button>
+        </Form>
     </>
   )
 }
