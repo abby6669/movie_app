@@ -21,8 +21,8 @@ const create = async (req, res) => {
       }
 
       // ya validado el email, crear usuario y responder
-      const body = { email, password };
-      const newUser = await UsersModel.create(body);
+      const newBody = { email, password };
+      const newUser = await UsersModel.create(newBody);
       return res.status(201).send({ message: 'Usuario creado!', user: newUser });
     } catch (err) {
       return res

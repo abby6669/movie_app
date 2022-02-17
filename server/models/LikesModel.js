@@ -5,10 +5,6 @@ const { Schema } = mongoose;
 
 // PRODUCT SCHEMA
 const likeSchema = new Schema({
-  name: {
-    type: String,
-    required: true
-  },
   isActive: {
     type: Boolean,
     default: true
@@ -19,11 +15,13 @@ const likeSchema = new Schema({
 
   },
   itemId: {
-    type: Number,
-    required: true,
-    default:0
+    type: String,
+    required: true
   },
-
+  userId: {
+    type: String,
+    required: true
+  }
   }
 );
 
