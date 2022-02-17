@@ -10,7 +10,7 @@ router.post('/register', UsersController.create);
 router.post('/login', UsersController.login);
 
 // Leer todos - GET /
-router.get('/', UsersController.findAll); 
+router.get('/', UsersController.findAll);
 
 // Leer uno - GET /:id
 router.get('/:id', UsersController.findById);

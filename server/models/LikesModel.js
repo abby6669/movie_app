@@ -16,8 +16,16 @@ const likeSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now
+
+  },
+  itemId: {
+    type: Number,
+    required: true,
+    default:0
+  },
+
   }
-});
+);
 
 // CREANDO EL MODELO CON BASE AL SCHEMA CREADO
 const LikesModel = mongoose.model('LikesModel', likeSchema);

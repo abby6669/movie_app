@@ -6,7 +6,17 @@ const { Schema } = mongoose;
 const commentSchema = new Schema({
   name: {
     type: String,
-    required: true
+    required: false
+  },
+
+  imgUrl: {
+    type: String,
+    required: false
+  },
+
+  isActive: {
+    type: Boolean,
+    default: true
   },
   createdAt: {
     type: Date,

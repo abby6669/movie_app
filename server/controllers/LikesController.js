@@ -1,12 +1,16 @@
+const res = require('express/lib/response');
+//const jwt = require('jsonwebtoken');
+const { LikesModel } = require('../models');
 // Revisar función
 const createLike = async (req, res) => {
-    const { name } = req.body
-    if (!name) {
-        return res.status(400).send({ message: 'Ingresa nombre' });
+    const { itemId } = req.body
+    if (!itemId) {
+        return res.status(400).send({ message: 'No pudiste votar' });
     }
-    //const contador=0
     try {
-      const likeMovie = await LikesModel.createLike(name)
+
+      const body = { name, itemId };
+      const likeMovie = await LikesModel.create(itemId)
       if (likeMovie) {
         return res.status(201).send({ message: 'ok!', likeMovie})
       }
@@ -18,18 +22,23 @@ const createLike = async (req, res) => {
 }
 
 const deleteLike = async (req, res) => {
-    const { id } = req.body
-    try {
-      const deletelikeMovie = await UsersModel.deleteLike(id)
-      if (deleteLike) {
-        return res.status(200).send()
+      const { itemId } = req.body
+      if (!itemId) {
+          return res.status(400).send({ message: 'No se pudo borrar' });
       }
-    } catch (err) {
-        return res
-        .status(500)
-        .send({ message: 'Error!', error: err.message });
-    };
+      try {
+        const body = { itemId };
+        const dislikeMovie = await LikesModel.deleteOne(itemId)
+        if (likeMovie) {
+          return res.status(201)
+        }
+      } catch (err) {
+          return res
+          .status(500)
+          .send({ message: 'No pudiste borrarlo, chato', error: err.message });
+      };
 }
-  
+
+
 
 module.exports = { createLike, deleteLike }
