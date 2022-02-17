@@ -1,7 +1,7 @@
 const res = require('express/lib/response');
-//const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const { UsersModel } = require('../models');
-const SECRET = process.env.SECRET;
+const SECRET = process.env.SECRET || 'secretomaximo';
 
 const create = async (req, res) => {
     const { email, password } = req.body;
@@ -89,40 +89,46 @@ const findByIdAndDelete = async (req, res) => {
 }
 
 const login = async (req, res) => {
-    // Desestructurar propiedades email y password del body y validar que existan
-    const { email, password } = req.body;
-    if (!email || !password) {
-        return res.status(400).send({ message: 'Ingresa un email y password' });
-    }
+    
+    // // Desestructurar propiedades email y password del body y validar que existan
+    // const { email, password } = req.body;
+    // if (!email || !password) {
+    //     return res.status(400).send({ message: 'Ingresa un email y password' });
+    // }
 
-    try {
-        // Buscar al usuario por su email en la base de datos y validar que exista
-        const user = await UsersModel.findOne({email})
-        if (!user) {
-            return res.status(400).send({ message: 'Usuario no existe.'})
-        }
+    // try {
+    //     // Buscar al usuario por su email en la base de datos y validar que exista
+    //     const user = await UsersModel.findOne({email})
+    //     if (!user) {
+    //         return res.status(400).send({ message: 'Usuario no existe.'})
+    //     }
 
-        // Comparar password proporcionado con el almacenado en la base de datos y validar que la comparación sea verdadera
-        const validPassword = await user.comparePassword(password);
-        if (!validPassword) {
-            return res.status(400).send({ message: 'Usuario denegado' });
-        }
+    //     // Comparar password proporcionado con el almacenado en la base de datos y validar que la comparación sea verdadera
+    //     const validPassword = await user.comparePassword(password);
+    //     if (!validPassword) {
+    //         return res.status(400).send({ message: 'Usuario denegado' });
+    //     }
 
         // ya validado el password, crear token de autenticación
+        // const payload = {
+        // id: user._id,
+        // email: user.email
+        // };
+        
         const payload = {
-        id: user._id,
-        email: user.email
+        id: '123',
+        email: 'hola@gmail.com'
         };
 
         // Generamos un token con el payload y nuestro secreto
         const token = jwt.sign(payload, SECRET, { expiresIn: '10m' });
 
         return res.send({ message: 'Hola desde login!', token });
-    } catch (err) {
-        return res
-            .status(400)
-            .send({ message: 'Error al hacer login!', error: err.message });
-    }
+    // } catch (err) {
+    //     return res
+    //         .status(400)
+    //         .send({ message: 'Error al hacer login!', error: err.message });
+    // }
 };
 
 module.exports = { create, findAll, findById, findByIdAndUpdate, findByIdAndDelete, login }

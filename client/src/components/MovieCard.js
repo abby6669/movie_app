@@ -1,18 +1,25 @@
+import axios from 'axios';
 import { Card, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import {useAuth} from '../contexts/AuthContext'
 
 function MovieCard(props) {
-    const { id, poster_path, original_title } = props;
+    const { id, image } = props;
+    const { currentUser, token } = useAuth();
+
+
+    function handleLike() {
+            const headers = {'Authorization': `Bearer ${token}`}
+            const URL_API_LIKES = 'http://localhost:8080/api/v1/likes'
+            return axios.post(URL_API_LIKES, {itemId: id, userId: '123'}, {headers})
+            .then(response => console.log(response.data))
+            .catch(error => error.message);  
+    }
 
     return (
-        <Card className="movie-card">
-            <Link to={`/movies/${id}`}>
-                <Card.Img src={`https://image.tmdb.org/t/p/original/${poster_path}`}/>
-            </Link>
-            <Card.Body className="d-flex flex-wrap" >
-                <h3 className="text-center w-100">{original_title}</h3>
-                <Button className="w-50" variant="outline-primary">Like</Button>
-                <Button className="w-50" as={Link} to={`/movies/${id}`} variant="outline-primary">Detalles</Button>
+        <Card className="movie-card d-inline-block">
+            <Card.Img src={`https://image.tmdb.org/t/p/original/${image}`}/>
+            <Card.Body>
+                <Button variant="outline-primary" onClick={handleLike}>Like</Button>
             </Card.Body>
         </Card>
     )
