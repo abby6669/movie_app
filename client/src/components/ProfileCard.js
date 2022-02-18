@@ -1,4 +1,5 @@
 import {Card, Button} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Foto from "./Perfil.jpeg";
 
 
@@ -15,7 +16,7 @@ export function ProfileCard() {
                 <li>Comedia</li>
             </ul>
           </Card.Text>
-          <Button className="w-100" variant="primary">Actualizar Perfil</Button>
+          <Button className="w-100" variant="primary" as={Link} to="/update-profile">Actualizar Perfil</Button>
         </Card.Body>
     </Card>
 

@@ -1,57 +1,40 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik'
-import '../formStyle.css'
+import { Card, Form, Button} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-const validate = (values) => {
- const errors={}
-    if (!values.Email){
-    errors.Email = 'Requerido'
-    } else if (!/\S+@\S+\.\S+/.test(values.Email)) {
-    errors.Email = 'Email Invalido'
-    }
-    if (!values.Password){
-    errors.Password = 'Requerido'
-    } else if (!/^(?=.*?[A-Z]).{8,}$/.test(values.Password)) {
-    errors.Password = 'Debe tener más de 7 caracteres y una letra mayúscula'
-    }
-    if (!values.ConfirmPassword){
-    errors.ConfirmPassword = 'Requerido'
-    } else if (values.ConfirmPassword != values.Password) {
-    errors.ConfirmPassword = 'Debe ser igual al password, rey'
-    }
-return errors
-}
-
-function App() {
+function UpdateForm() {
   return (
-    <Formik
-        initialValues={{  Email: '', Password: '',  ConfirmPassword: '',}}
-        validate={validate}
-        onSubmit={values => console.log(values)}
-      >
-      <div className='Title'>Actualizar perfil
-       <Form className='formLabel'>
-          <label className='Label'></label>
-          <br />
-          <Field name='Email' type='Email' className='input' placeholder='Correo' />
-          <ErrorMessage name='Email' className='inputError'/>
-          <br/>
-          <label className='Label'></label>
-          <Field name='Password' type='Password' className='input' placeholder='Contraseña'/>
-          <ErrorMessage name='Password' className='inputError' />
-          <br/>
-          <label className='Label'></label>
-          <Field name='ConfirmPassword' type='Password' className='input' placeholder='Confirmar Contraseña'/>
-          <ErrorMessage name='ConfirmPassword' className='inputError'/>
-          <br/>
-          <button className='button' type='submit' >Actualizar perfil</button>
-          <br />
-        </Form>
-      </div>
-  </Formik>
+    <Card className="w-75 mx-auto my-5">
+      <Card.Body>
+          <h1 className="display-4 text-center my-3">Actualizar perfil</h1>
+          <Form>
+              <Form.Group className="mb-3" controlId="formName">
+                  <Form.Label>Nombre</Form.Label>
+                  <Form.Control type="text" placeholder="Ingresa tu nombre" autoComplete="off" required />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formEmail">
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control type="email" placeholder="Ingresa tu email" autoComplete="off" required />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formPassword">
+                  <Form.Label>Contraseña</Form.Label>
+                  <Form.Control type="password" placeholder="Ingresa tu contraseña" autoComplete="off" required />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formPassword">
+                  <Form.Label> Confirmación de contraseña </Form.Label>
+                  <Form.Control type="password" placeholder="Confirma tu contraseña" autoComplete="off" required />
+              </Form.Group>
+
+              <Button className="w-100" variant="primary" type="submit">
+                  Actualizar perfil
+              </Button>
+          </Form>
+          <Card.Text className="text-muted text-center my-3">
+          </Card.Text>
+      </Card.Body>
+  </Card>
 );
 }
 
-export default App;
-//git checkout -b components/carousel
-
-// //instale yarn add react-icons
+export default UpdateForm;

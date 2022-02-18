@@ -1,32 +1,38 @@
-import { Navbar, Nav, Container, Button} from 'react-bootstrap';
+import { Navbar, Nav, Form, FormControl, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { useThemeContext } from '../contexts/ThemeContext';
+// import { useThemeContext } from '../contexts/ThemeContext';
 
 function Navegacion() {
-  const { toggle, handleToggle } = useThemeContext();
+  // const { toggle, handleToggle } = useThemeContext();
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" className={`header ${toggle ? 'dark' : 'light'}`} >
-      <Container>
-        <Navbar.Brand as={Link} to="/">Super Movies</Navbar.Brand>
+    <Navbar bg="dark" variant="dark" sticky="top" className="d-flex align-items-end">
+        <Navbar.Brand className="ms-5" as={Link} to="/">ULTRA MOVIE APP</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/login">Iniciar sesión</Nav.Link>
-            <Nav.Link as={Link} to="/register">Registro</Nav.Link>
-            <Nav.Link as={Link} to="/profile">Perfil</Nav.Link>
+            <Button variant="primary" as={Link} to="/register" className="ml-3" >Registro</Button>{' '}
+            <Button variant="outline-primary" as={Link} to="/login">Iniciar sesión</Button>{' '}
             <Nav.Link as={Link} to="/update-profile">Ajustes</Nav.Link>
             <Nav.Link as={Link} to="/">Cerrar sesión</Nav.Link>
-            <Button
+            {/* <Button
               className={`boton ${toggle ? 'dark' : 'light'}`}
               onClick={handleToggle}
             >
               Cambiar tema: {toggle ? '🌚' : '🌞'}
-            </Button>
+            </Button> */}
           </Nav>
+          <Form className="d-flex me-5">
+            <FormControl
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+            />
+            <Button variant="outline-success">Search</Button>
+          </Form>
         </Navbar.Collapse>
-      </Container>
     </Navbar>
   );
 }

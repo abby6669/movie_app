@@ -1,4 +1,5 @@
-import {Form, Button, Card} from 'react-bootstrap/'
+import {Form, Button, Card} from 'react-bootstrap/';
+import { Link } from 'react-router-dom';
 
 function RegisterForm() {
 
@@ -27,8 +28,9 @@ function RegisterForm() {
                       Crear una nueva cuenta
                   </Button>
               </Form>
-              <Card.Text className="text-muted text-center my-3">
-              </Card.Text>
+              <Link style={{ fontSize: "14px" }} className="text-muted d-flex justify-content-center my-3 mx-auto" to="/login">
+                Ya tengo una cuenta 
+              </Link>
           </Card.Body>
       </Card>
       </>

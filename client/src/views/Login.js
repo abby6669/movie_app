@@ -1,4 +1,5 @@
 import {Card, Form, Button} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import {useAuth} from '../contexts/AuthContext'
@@ -39,9 +40,9 @@ function Login(props) {
             </Form>
             <Card.Text className="text-muted text-center my-3">
             </Card.Text>
-            <Card.Text style={{ fontSize: "14px" }} className="text-muted text-center my-3">
+            <Link style={{ fontSize: "14px" }} className="text-muted d-flex justify-content-center my-3 mx-auto" to="/register">
                 ¿Aún no tienes cuenta? 
-            </Card.Text>
+            </Link>
         </Card.Body>
     </Card>
     <Footer />
