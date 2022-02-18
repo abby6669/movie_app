@@ -89,46 +89,46 @@ const findByIdAndDelete = async (req, res) => {
 }
 
 const login = async (req, res) => {
-    
-    // // Desestructurar propiedades email y password del body y validar que existan
-    // const { email, password } = req.body;
-    // if (!email || !password) {
-    //     return res.status(400).send({ message: 'Ingresa un email y password' });
-    // }
 
-    // try {
+    // // Desestructurar propiedades email y password del body y validar que existan
+     const { email, password } = req.body;
+     if (!email || !password) {
+        return res.status(400).send({ message: 'Ingresa un email y password' });
+     }
+
+     try {
     //     // Buscar al usuario por su email en la base de datos y validar que exista
-    //     const user = await UsersModel.findOne({email})
-    //     if (!user) {
-    //         return res.status(400).send({ message: 'Usuario no existe.'})
-    //     }
+         const user = await UsersModel.findOne({email})
+          if (!user) {
+            return res.status(400).send({ message: 'Usuario no existe.'})
+       }
 
     //     // Comparar password proporcionado con el almacenado en la base de datos y validar que la comparación sea verdadera
-    //     const validPassword = await user.comparePassword(password);
-    //     if (!validPassword) {
-    //         return res.status(400).send({ message: 'Usuario denegado' });
-    //     }
+         const validPassword = await user.comparePassword(password);
+         if (!validPassword) {
+            return res.status(400).send({ message: 'Usuario denegado' });
+        }
 
         // ya validado el password, crear token de autenticación
+         const payload = {
+         id: user.id,
+         email: user.email
+         };
+
         // const payload = {
-        // id: user._id,
-        // email: user.email
+        // id: '123',
+        // email: 'hola@gmail.com'
         // };
-        
-        const payload = {
-        id: '123',
-        email: 'hola@gmail.com'
-        };
 
         // Generamos un token con el payload y nuestro secreto
         const token = jwt.sign(payload, SECRET, { expiresIn: '10m' });
 
-        return res.send({ message: 'Hola desde login!', token });
-    // } catch (err) {
-    //     return res
-    //         .status(400)
-    //         .send({ message: 'Error al hacer login!', error: err.message });
-    // }
+        return res.send({ message: 'Loggeado!', token });
+          } catch (err) {
+              return res
+                  .status(400)
+                  .send({ message: 'Error al hacer login!', error: err.message });
+          }
 };
 
 module.exports = { create, findAll, findById, findByIdAndUpdate, findByIdAndDelete, login }
