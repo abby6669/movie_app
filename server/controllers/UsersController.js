@@ -1,7 +1,7 @@
 const res = require('express/lib/response');
 const jwt = require('jsonwebtoken');
 const { UsersModel } = require('../models');
-const SECRET = process.env.SECRET || 'secretomaximo';
+const SECRET = process.env.SECRET;
 
 const create = async (req, res) => {
     const { email, password } = req.body;
