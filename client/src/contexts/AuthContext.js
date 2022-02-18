@@ -9,23 +9,23 @@ function useAuth() {
 }
 
 function AuthProvider({ children }) {
-  const [ token, setToken ] = useState(null);
+  const [ token, setToken ] = useState(localStorage.getItem('token') || null);
   const [ currentUser, setCurrentUser ] = useState(null);
   const [ isAuth, setIsAuth ] = useState(false);
   
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if(!isAuth && token){
-      setToken(token)
-      const decoded = decode(token)
+    const tokenCookie = localStorage.getItem('token');
+    if(tokenCookie){
+      setToken(tokenCookie)
+      const decoded = decode(tokenCookie)
       setCurrentUser(decoded)
       setIsAuth(true)
     }
-    return token;
-  }, [isAuth])
+    return tokenCookie;
+  }, [])
 
   function register(email, password){
-    const URL_PRODUCTS_API = 'http://localhost:8080/api/v1/users/register';
+    const URL_PRODUCTS_API = 'http://localhost/api/v1/users/register';
     return axios
       .post(URL_PRODUCTS_API, { email, password })
       .then(response => response.data.user)
