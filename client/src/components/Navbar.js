@@ -1,35 +1,34 @@
-import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, Container, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useThemeContext } from '../contexts/ThemeContext';
 
-export function Navegacion() {
-    return (
-      <header>
-        <Navbar bg="dark" variant="dark" expand="lg" >
-  <Container>
-    <Navbar.Brand href="#home">Super Movies</Navbar.Brand>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="me-auto">
-        <Nav.Link as={Link} to="/">Home</Nav.Link>
-        <Nav.Link as={Link} to="/">Peliculas</Nav.Link>
-        <Nav.Link as={Link} to="/">Iniciar sesión</Nav.Link>
-        <Nav.Link as={Link} to="/">Registro</Nav.Link>
+function Navegacion() {
+  const { toggle, handleToggle } = useThemeContext();
 
-        <NavDropdown title="Perfil" id="basic-nav-dropdown">
-          <NavDropdown.Item as={Link} to="/login">Ajustes</NavDropdown.Item>
-          <NavDropdown.Item as={Link} to="/register">Cerrar sesión</NavDropdown.Item>  
-        </NavDropdown>
-      </Nav>
-    </Navbar.Collapse>
-  </Container>
-</Navbar>
-
-</header>
-
-
-
-
-    );
+  return (
+    <Navbar bg="dark" variant="dark" expand="lg" className={`header ${toggle ? 'dark' : 'light'}`} >
+      <Container>
+        <Navbar.Brand as={Link} to="/">Super Movies</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/login">Iniciar sesión</Nav.Link>
+            <Nav.Link as={Link} to="/register">Registro</Nav.Link>
+            <Nav.Link as={Link} to="/profile">Perfil</Nav.Link>
+            <Nav.Link as={Link} to="/update-profile">Ajustes</Nav.Link>
+            <Nav.Link as={Link} to="/">Cerrar sesión</Nav.Link>
+            <Button
+              className={`boton ${toggle ? 'dark' : 'light'}`}
+              onClick={handleToggle}
+            >
+              Cambiar tema: {toggle ? '🌚' : '🌞'}
+            </Button>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
 }
 
 export default Navegacion;
