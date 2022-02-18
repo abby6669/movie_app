@@ -33,7 +33,7 @@ const create = async (req, res) => {
 
 const findAll = async (req, res) => {
     try{
-        const users = await UsersModel.findAll()
+        const users = await UsersModel.find()
         return res.status(200).send({ message: 'Lista de usuarios!', users });
     }
     catch (err) {
