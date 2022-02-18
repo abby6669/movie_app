@@ -12,7 +12,6 @@ function Movies(props) {
     const [movies, setMovies] = useState([])
     const [pageNumber, setPageNumber] = useState(1)
     const [loading, setLoading] = useState(false)
-    const { login } = useAuth()
 
     const handlePageNumber = (number) =>{
         setPageNumber(number)
@@ -42,7 +41,6 @@ function Movies(props) {
     };
     
     useEffect(() => getMovies(), []);
-    useEffect(() => login(), []);
 
     if (loading) {
         return (
@@ -71,6 +69,7 @@ function Movies(props) {
                         key={movie.id} 
                         id={movie.id}
                         image={ movie.poster_path} 
+                        title={ movie.title }
                     />
                 ))}
             </div>

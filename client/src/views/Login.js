@@ -1,51 +1,66 @@
-import {Card, Form, Button} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useRef, useState } from 'react';
+import { Alert, Button, Card, Form } from 'react-bootstrap';
+import { useAuth } from '../contexts/AuthContext';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import {useAuth} from '../contexts/AuthContext'
-import axios from 'axios';
 
-function Login(props) {
-    // const { email, password } = props;
-    const { email, password } = useAuth();
+function Login() {
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const { currentUser, login } = useAuth();
+  const [ error, setError ] = useState('');
+  const [ loading, setLoading ] = useState('');
+  const navigate = useNavigate();
 
-    function handleLogin() {
-            // const headers = {'Authorization': `Bearer ${token}`}
-            const URL_API_LOGIN = 'http://localhost:8080/api/v1/user/login'
-            return axios.post(URL_API_LOGIN, {email: email, password: password})
-            .then(response => console.log(response.data))
-            .catch(error => error.message);  
+  async function handleSubmit(e){
+    e.preventDefault();
+
+    try {
+      setError('')
+      setLoading(true)
+      await login(emailRef.current.value, passwordRef.current.value);
+      navigate('/');
+    } catch (e) {
+      setError('Error al iniciar sesión: ' + e.message)
+      setLoading(false)
+      console.log(e);
     }
+  }
+
+  if (currentUser) {
+    navigate('/');
+  }
 
   return (
     <>
-    <Navbar />
-    <Card className="w-75 mx-auto mt-5 mb-5">
+      <Navbar />
+      <Card className="w-75 mx-auto mt-5">
         <Card.Body>
-            <h1 className="display-4 text-center my-3">Inicia sesión</h1>
-            <Form>
-                <Form.Group className="mb-3" controlId="formEmail">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Ingresa tu email" autoComplete="off" required />
-                </Form.Group>
+          <h1 className="display-4 text-center my-3">Log In</h1>
+          { error && error !== '' && <Alert variant="danger">{ error }</Alert> }
+          <Form onSubmit={ handleSubmit }>
+            <Form.Group className="mb-3" controlId="formEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control ref={ emailRef } type="email" placeholder="Enter email" autoComplete="off" required />
+            </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formPassword">
-                    <Form.Label>Contraseña</Form.Label>
-                    <Form.Control type="password" placeholder="Ingresa tu contraseña" autoComplete="off" required />
-                </Form.Group>
+            <Form.Group className="mb-3" controlId="formPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control ref={ passwordRef } type="password" placeholder="Password" autoComplete="off" required />
+            </Form.Group>
 
-                <Button className="w-100" variant="primary" type="submit" onClick={handleLogin}>
-                    Iniciar sesión 
-                </Button>
-            </Form>
-            <Card.Text className="text-muted text-center my-3">
-            </Card.Text>
-            <Link style={{ fontSize: "14px" }} className="text-muted d-flex justify-content-center my-3 mx-auto" to="/register">
-                ¿Aún no tienes cuenta? 
-            </Link>
+            <Button className="w-100" variant="primary" type="submit" disabled={ loading }>
+              Log In
+            </Button>
+          </Form>
+
+          <Card.Text className="text-muted text-center my-3">
+            Necesitas una cuenta? <Link to="/signup">Regístrate aquí</Link>
+          </Card.Text>
         </Card.Body>
-    </Card>
-    <Footer />
+      </Card>
+      <Footer />
     </>
   );
 }
