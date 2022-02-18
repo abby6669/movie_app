@@ -4,12 +4,16 @@ const { LikesModel } = require('../models');
 
 // Revisar función
 const createLike = async (req, res) => {
-    const { itemId, userId } = req.body
-    if (!itemId || !userId) {
-        return res.status(400).send({ message: 'No pudiste votar' });
+    const { itemId, userId, poster_path, title } = req.body
+    if (!itemId || !userId || !poster_path || !title) {
+        return res.status(400).send({ message: 'Para dar like necesitas un itemId, userId, poster_path y title' });
     }
     try {
-      const newBody = { itemId, userId }
+      const likeExists = await LikesModel.findOne({userId, itemId})
+      if (likeExists){
+        return res.status(400).send({ message: 'Este like ya existe!'})
+      }
+      const newBody = { itemId, userId, poster_path, title }
       const newLike = await LikesModel.create(newBody)
       if (!newLike) {
         return res.status(400).send({ message: 'Error creando like' })
@@ -19,8 +23,21 @@ const createLike = async (req, res) => {
     } catch (err) {
         return res
         .status(500)
-        .send({ message: 'No es posible votar ahora!', error: err.message });
+        .send({ message: 'No es posible dar like!', error: err.message });
     };
+}
+
+const getLikes = async (req, res) => {
+  const { userId } = req.params
+  try {
+    const likes = await LikesModel.find({userId})
+    return res.status(200).send({ message: 'ok!', likes })
+
+  } catch (err) {
+      return res
+      .status(500)
+      .send({ message: 'No es posible dar like!', error: err.message });
+  };
 }
 
 const deleteLike = async (req, res) => {
@@ -41,6 +58,4 @@ const deleteLike = async (req, res) => {
       };
 }
 
-
-
-module.exports = { createLike, deleteLike }
+module.exports = { createLike, getLikes, deleteLike }

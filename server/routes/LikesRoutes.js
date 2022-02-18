@@ -6,6 +6,9 @@ const { LikesController } = require('../controllers');
 //Create like - POST
 router.post('/', LikesController.createLike);
 
+// GET ALL
+router.get('/:userId', LikesController.getLikes);
+
 // Delete Like - DELETE
 router.delete('/', LikesController.deleteLike);
 

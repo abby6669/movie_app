@@ -5,18 +5,26 @@ const { Schema } = mongoose;
 
 // PRODUCT SCHEMA
 const likeSchema = new Schema({
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  itemId: {
-    type: String,
-    required: true
-  },
-  userId: {
-    type: String,
-    required: true
-  }
+    createdAt: {
+      type: Date,
+      default: Date.now
+    },
+    itemId: {
+      type: String,
+      required: true
+    },
+    userId: {
+      type: String,
+      required: true
+    },
+    poster_path: {
+      type: String,
+      required: true
+    },
+    title: {
+      type: String,
+      required: true
+    }
   }
 );
 
