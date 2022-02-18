@@ -111,7 +111,7 @@ const login = async (req, res) => {
 
         // ya validado el password, crear token de autenticación
          const payload = {
-         id: user.id,
+         id: user._id,
          email: user.email
          };
 
