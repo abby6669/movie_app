@@ -6,8 +6,8 @@ import Profile from './views/Profile';
 import Register from './views/Register';
 import MovieDetails from './views/MovieDetails';
 import UpdateProfile from './views/UpdateProfile';
+import Likes from './views/Likes';
 import './App.css';
-
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
       <Router>
           <Routes>
             <Route exact path="/" element={ <Movies /> }/>
+            <Route exact path="/likes" element={ <Likes /> }/>
             <Route exact path="/profile" element={ <Profile /> }/>
             <Route exact path="/movies/:id" element={ <MovieDetails /> }/>
             <Route exact path="/update-profile" element={ <UpdateProfile /> }/>
