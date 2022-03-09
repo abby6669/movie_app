@@ -1,7 +1,8 @@
-import axios from 'axios'
-import { Link } from 'react-router-dom';
-import {useAuth} from '../contexts/AuthContext'
 import {Form, Button, Card} from 'react-bootstrap/';
+import { Link, useNavigate } from 'react-router-dom';
+import { useRef, useState } from 'react';
+import {useAuth} from '../contexts/AuthContext'
+//import axios from 'axios'
 
 function RegisterForm() {
     // const {register} = useAuth()
@@ -10,8 +11,34 @@ function RegisterForm() {
     //     const URL_API_LIKES = 'http://localhost:8080/api/v1/users/register'
     //     return axios.post(URL_API_LIKES, {email: 'email', password: '123'}, {headers})
     //     .then(response => console.log(response.data))
-    //     .catch(error => error.message);  
+    //     .catch(error => error.message);
     // }
+      const emailRef = useRef();
+      const passwordRef = useRef();
+    //  const confirmpasswordRef = useRef();
+      const { currentUser, register } = useAuth();
+      const [ error, setError ] = useState('');
+      const [ loading, setLoading ] = useState('');
+      const navigate = useNavigate();
+
+      async function handleSubmit(e){
+        e.preventDefault();
+
+        try {
+          setError('')
+          setLoading(true)
+          await register(emailRef.current.value, passwordRef.current.value);
+          navigate('/');
+        } catch (e) {
+          setError('Error al registrarse: ' + e.message)
+          setLoading(false)
+          console.log(e);
+        }
+      }
+
+      if (currentUser) {
+        navigate('/');
+      }
 
     return (
       <>
@@ -40,7 +67,7 @@ function RegisterForm() {
                   </Button>
               </Form>
               <Link style={{ fontSize: "14px" }} className="text-muted d-flex justify-content-center my-3 mx-auto" to="/login">
-                Ya tengo una cuenta 
+                Ya tengo una cuenta
               </Link>
           </Card.Body>
       </Card>

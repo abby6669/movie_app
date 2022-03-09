@@ -12,7 +12,7 @@ function AuthProvider({ children }) {
   const [ token, setToken ] = useState(localStorage.getItem('token') || null);
   const [ currentUser, setCurrentUser ] = useState(null);
   const [ isAuth, setIsAuth ] = useState(false);
-  
+
   useEffect(() => {
     const tokenCookie = localStorage.getItem('token');
     if(tokenCookie){
@@ -25,7 +25,7 @@ function AuthProvider({ children }) {
   }, [])
 
   function register(email, password){
-    const URL_PRODUCTS_API = 'http://localhost/api/v1/users/register';
+    const URL_PRODUCTS_API = 'http://localhost:8080/api/v1/users/register';
     return axios
       .post(URL_PRODUCTS_API, { email, password })
       .then(response => response.data.user)
