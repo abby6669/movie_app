@@ -17,10 +17,9 @@ const createComment = async (req, res) => {
 };
 
 const readComments = async (req, res) => {
-  const { userId } = req.params
-  const { itemId } = req.body
+  const { itemId } = req.params
   try {
-    const comments = await CommentssModel.find({userId, itemId})
+    const comments = await CommentsModel.find({ itemId })
     return res.status(200).send({ message: 'Estos son los comentarios', comments })
 
   } catch (err) {
