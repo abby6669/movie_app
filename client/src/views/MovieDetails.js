@@ -10,9 +10,8 @@ function IndividualMovie() {
     <>
     <Navbar />
     <MovieInfo />
-    <h3 className="display-5 my-5 ms-5">Deja tu comentario:</h3>
     <CommentCard />
-    <CommentsList />
+    {/* <CommentsList /> */}
     <Footer />
     </>
   );

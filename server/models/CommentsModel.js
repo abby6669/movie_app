@@ -4,19 +4,25 @@ const { Schema } = mongoose;
 // Revisar propiedades de Schema
 // PRODUCT SCHEMA
 const commentSchema = new Schema({
+  itemId: {
+    type: String,
+    required: true
+  },
+  userId: {
+    type: String,
+    required: true
+  },
   name: {
     type: String,
     required: false
   },
-
-  imgUrl: {
+  title: {
     type: String,
-    required: false
+    required: true
   },
-
-  isActive: {
-    type: Boolean,
-    default: true
+  content: {
+    type: String,
+    required: true
   },
   createdAt: {
     type: Date,

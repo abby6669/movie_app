@@ -17,7 +17,7 @@ function Movie() {
         fetchMovieDetails();
     }, []);
 
-    const { poster_path, original_title } = currentMovie;
+    const { poster_path, original_title, overview, release_date } = currentMovie;
 
     return (
         currentMovie &&
@@ -26,9 +26,11 @@ function Movie() {
                 <Card.Img src={`https://image.tmdb.org/t/p/original/${poster_path}`}/>
             </Link>
             <Card.Body>
-                <Card.Title className="display-5 d-flex justify-content-between align-items-center">{ original_title }</Card.Title>
+                <Card.Title className="display-5">{ original_title }</Card.Title>
+                <Card.Text className="mx-auto mt-4"> Año de Lanzamiento: { release_date }</Card.Text>
+                <Card.Text className="mx-auto mt-4"> Reseña: { overview }</Card.Text>
             </Card.Body>
-        </Card>
+            </Card>
         
     );
 }

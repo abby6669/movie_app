@@ -2,10 +2,8 @@ const res = require('express/lib/response');
 //const jwt = require('jsonwebtoken');
 const { CommentsModel } = require('../models');
 
-// Marca error: CommentsModel is not defined
 const createComment = async (req, res) => {
-
-  const { body } = req
+  const { body } = req.body
   try{
     const comment = await CommentsModel.create(body)
     if (comment) {
@@ -16,9 +14,21 @@ const createComment = async (req, res) => {
       .status(500)
       .send({ message: 'Error al crear comentario', error: err.message });
     }
+};
+
+const readComments = async (req, res) => {
+  const { userId } = req.params
+  const { itemId } = req.body
+  try {
+    const comments = await CommentssModel.find({userId, itemId})
+    return res.status(200).send({ message: 'Estos son los comentarios', comments })
+
+  } catch (err) {
+      return res
+      .status(500)
+      .send({ message: 'No es posible ver comentarios!', error: err.message });
   };
-
-
+}
 
 const readComment = async(req, res) => {
   const { id } = req.params
@@ -32,8 +42,7 @@ const readComment = async(req, res) => {
       .status(500)
       .send({ message: 'Error al leer comentario', error: err.message });
     }
-  };
-
+};
 
 const updateComment = async(req, res) => {
   const { body } = req;
@@ -65,4 +74,4 @@ const deleteComment = async(req, res) => {
     }
 }
 
-module.exports = { readComment, createComment, updateComment, deleteComment }
+module.exports = { readComments, readComment, createComment, updateComment, deleteComment }

@@ -4,7 +4,6 @@ import {Carousel} from 'react-bootstrap/'
  import TerceraPortada from './Images/TerceraPortada.png'
  import Venom from './Images/Venom.jpg'
  
-
 function CarouselHeader() {
   return (
     <div className="ContainerCarouselHeader">
@@ -33,13 +32,6 @@ function CarouselHeader() {
           className="d-block w-100"
           src={TerceraPortada}
           alt="Third slide"
-        />
-
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={Venom}
         />
 
       </Carousel.Item>

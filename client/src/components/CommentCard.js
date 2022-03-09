@@ -4,7 +4,8 @@ function CommentCard(props) {
 //   const { id, title, content, createdAt } = props;
 
   return (
-      <>      
+      <> 
+        <h3 className="display-5 my-5 ms-5">Deja tu comentario:</h3>     
         <Form className="ms-5 w-50">
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Título</Form.Label>

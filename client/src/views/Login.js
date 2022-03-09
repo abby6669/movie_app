@@ -56,7 +56,7 @@ function Login() {
           </Form>
 
           <Card.Text className="text-muted text-center my-3">
-            Necesitas una cuenta? <Link to="/signup">Regístrate aquí</Link>
+            Necesitas una cuenta? <Link to="/register">Regístrate aquí</Link>
           </Card.Text>
         </Card.Body>
       </Card>
