@@ -10,7 +10,7 @@ function IndividualMovie() {
     <>
     <Navbar />
     <MovieInfo />
-    {/* <CommentCard /> */}
+    <CommentCard />
     {/* <CommentsList /> */}
     <Footer />
     </>
