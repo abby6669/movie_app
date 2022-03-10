@@ -12,14 +12,6 @@ const commentSchema = new Schema({
     type: String,
     required: true
   },
-  name: {
-    type: String,
-    required: false
-  },
-  title: {
-    type: String,
-    required: true
-  },
   content: {
     type: String,
     required: true

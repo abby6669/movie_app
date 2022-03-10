@@ -3,18 +3,23 @@ const res = require('express/lib/response');
 const { CommentsModel } = require('../models');
 
 const createComment = async (req, res) => {
-  const { body } = req.body
+  const { itemId, userId, content } = req.body
+  if (!itemId || !userId || !content){
+    return res.status(400).send({ message: 'Para crear un comentario necesitas un itemId, userId y content' });
+  }
   try{
-    const comment = await CommentsModel.create(body)
-    if (comment) {
-      res.status(201)
-      res.send( 'Has creado un comentario', comment )}
-    } catch (err) {
+    const newBody = { itemId, userId, content }
+    const newComment = await CommentsModel.create(newBody)
+    if (!newComment) {
+      return res.status(400).send({ message:'Error al crear comentario' })
+    } 
+    return res.status(201).send({ message: 'Has creado un comentario', newComment })
+  } catch (err) {
       return res
       .status(500)
       .send({ message: 'Error al crear comentario', error: err.message });
-    }
-};
+    };
+}
 
 const readComments = async (req, res) => {
   const { itemId } = req.params
@@ -32,10 +37,9 @@ const readComments = async (req, res) => {
 const readComment = async(req, res) => {
   const { id } = req.params
   try{
-    const read = await CommentsModel.findOne(id)
+    const read = await CommentsModel.findOne({id})
     if (read) {
-      res.status(201)
-      res.send( ' Comentario leído', read )}
+      res.status(201).send({ message: 'Comentario:', read })}
     } catch (err) {
       return res
       .status(500)

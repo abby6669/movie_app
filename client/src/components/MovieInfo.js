@@ -21,7 +21,7 @@ function Movie() {
 
     return (
         currentMovie &&
-        <Card className="w-25 mx-auto mt-5 ms-5" style={{ marginBottom: '10em' }}>
+        <Card className="w-25 mx-auto mt-5 ms-5 mb-0">
             <Link to={`/movies/${id}`}>
                 <Card.Img src={`https://image.tmdb.org/t/p/original/${poster_path}`}/>
             </Link>
