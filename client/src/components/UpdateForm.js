@@ -1,40 +1,38 @@
 import { Card, Form, Button, Alert} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext'
-import axios from 'axios'
 
 function UpdateForm() {
   const [ error, setError ] = useState('');
+  const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
-//  const updatePic = useRef();
-const { currentUser } = useAuth();
+//const updatePic = useRef();
+  const { currentUser, updateProfile } = useAuth();
+  const navigate = useNavigate();
+  const [ loading, setLoading ] = useState(false);
+
   async function handleSubmit(e){
     e.preventDefault();
-
-    function updateRequest(email, password){
-      const URL_PRODUCTS_API = `http://localhost:8080/api/v1/users/${currentUser.id}`;
-      return axios
-        .post(URL_PRODUCTS_API, { email, password })
-        .then(response => response.data.user)
-        .catch(error => error.message);
-    }
 
     const passwordsMatch = passwordRef.current.value === confirmPasswordRef.current.value;
     if(!passwordsMatch) {
       return setError('Passwords no coinciden!');
-      try {
-        setError('')
-        await updateRequest(emailRef.current.value, passwordRef.current.value);
-      } catch (e) {
-        setError('Error al registrarse: ' + e.message)
-        console.log(e);
-      }
+    }
+  
+    try {
+      setError('')
+      setLoading(true)
+      await updateProfile(nameRef.current.value, emailRef.current.value, passwordRef.current.value);
+      navigate('/profile')
+    } catch (e) {
+      setError('Error al actualizar: ' + e.message)
+      setLoading(false)
+      console.log(e);
     }
   }
-
 
   return (
     <Card className="w-75 mx-auto my-5">
@@ -44,16 +42,16 @@ const { currentUser } = useAuth();
           <Form onSubmit={ handleSubmit }>
               <Form.Group className="mb-3" controlId="formName">
                   <Form.Label>Nombre</Form.Label>
-                  <Form.Control type="text" placeholder="Ingresa tu nombre, pero cuál nombre?" autoComplete="off" required />
+                  <Form.Control ref={nameRef} type="text" placeholder={currentUser.name ? currentUser.name : 'Ingresa aquí tu nombre'} autoComplete="off" required />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formEmail">
                   <Form.Label>Email</Form.Label>
-                  <Form.Control ref={emailRef} type="email" placeholder="Ingresa tu email" autoComplete="off" required />
+                  <Form.Control ref={emailRef} type="email" placeholder={currentUser.email} autoComplete="off" required />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formPassword">
                   <Form.Label>Contraseña</Form.Label>
-                  <Form.Control ref={passwordRef} type="password" placeholder="Ingresa tu contraseña" autoComplete="off" required />
+                  <Form.Control ref={passwordRef} type="password" placeholder="Ingresa tu nueva contraseña" autoComplete="off" required />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formPassword">
@@ -61,7 +59,7 @@ const { currentUser } = useAuth();
                   <Form.Control ref={confirmPasswordRef} type="password" placeholder="Confirma tu contraseña" autoComplete="off" required />
               </Form.Group>
 
-              <Button className="w-100" variant="primary" type="submit">
+              <Button className="w-100" variant="primary" type="submit" disabled={loading}>
                   Actualizar perfil
               </Button>
           </Form>

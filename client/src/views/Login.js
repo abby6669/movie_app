@@ -10,7 +10,7 @@ function Login() {
   const passwordRef = useRef();
   const { currentUser, login } = useAuth();
   const [ error, setError ] = useState('');
-  const [ loading, setLoading ] = useState('');
+  const [ loading, setLoading ] = useState(false);
   const navigate = useNavigate();
 
   async function handleSubmit(e){

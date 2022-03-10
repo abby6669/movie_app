@@ -20,7 +20,8 @@ const userSchema = new Schema({
 
   imgUrl: {
     type: String,
-    required: false
+    required: false,
+    default: 'https://stroseschool.stroselions.net/wp-content/uploads/2018/04/profile-blank-reva.png'
   },
 
   isActive: {

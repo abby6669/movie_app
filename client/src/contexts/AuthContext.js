@@ -25,17 +25,17 @@ function AuthProvider({ children }) {
   }, [])
 
   function register(email, password){
-    const URL_PRODUCTS_API = 'http://localhost:8080/api/v1/users/register';
+    const URL_REGISTER = 'http://localhost:8080/api/v1/users/register';
     return axios
-      .post(URL_PRODUCTS_API, { email, password })
+      .post(URL_REGISTER, { email, password })
       .then(response => response.data.user)
       .catch(error => error.message);
   }
 
   function login(email, password){
-    const URL_PRODUCTS_API = 'http://localhost:8080/api/v1/users/login';
+    const URL_LOGIN = 'http://localhost:8080/api/v1/users/login';
     return axios
-      .post(URL_PRODUCTS_API, { email, password })
+      .post(URL_LOGIN, { email, password })
       .then(response => {
         setToken(response.data.token)
         localStorage.setItem('token', response.data.token)
@@ -53,11 +53,20 @@ function AuthProvider({ children }) {
     setIsAuth(false)
   }
 
+  function updateProfile(name, email, password){
+    const URL_UPDATE = `http://localhost:8080/api/v1/users/${currentUser.id}`;
+    return axios
+      .post(URL_UPDATE, { name, email, password })
+      .then(response => response.data.user)
+      .catch(error => error.message);
+  }
+
 const value = {
   currentUser,
   register,
   login,
   logout,
+  updateProfile,
   token
 }
 
