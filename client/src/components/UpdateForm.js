@@ -24,10 +24,15 @@ function UpdateForm() {
       return setError('Passwords no coinciden!');
     }
 
+    const updatedName = nameRef.current.value ? nameRef.current.value : currentUser.name
+    const updatedEmail = emailRef.current.value ? emailRef.current.value : currentUser.email
+    const updatedPassword = passwordRef.current.value ? passwordRef.current.value : currentUser.password
+    const updatedImgUrl = imgUrlRef.current.value ? imgUrlRef.current.value : currentUser.imgUrl
+
     try {
       setError('')
       setLoading(true)
-      await updateProfile(nameRef.current.value, emailRef.current.value, passwordRef.current.value, imgUrlRef.current.value);
+      await updateProfile(updatedName, updatedEmail, updatedPassword, updatedImgUrl);
       navigate('/profile')
     } catch (e) {
       setError('Error al actualizar: ' + e.message)
@@ -45,21 +50,21 @@ function UpdateForm() {
           <Form onSubmit={ handleSubmit }>
               <Form.Group className="mb-3" controlId="formName">
                   <Form.Label>Nombre</Form.Label>
-                  <Form.Control ref={nameRef} type="text" placeholder={currentUser.name ? currentUser.name : 'Ingresa aquí tu nombre'} autoComplete="off" required />
+                  <Form.Control ref={nameRef} type="text" placeholder={currentUser.name ? currentUser.name : 'Ingresa aquí tu nombre'} autoComplete="off" />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formEmail">
                   <Form.Label>Email</Form.Label>
-                  <Form.Control ref={emailRef} type="email" placeholder={currentUser.email} autoComplete="off" required />
+                  <Form.Control ref={emailRef} type="email" placeholder={currentUser.email} autoComplete="off" />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formPassword">
                   <Form.Label>Contraseña</Form.Label>
-                  <Form.Control ref={passwordRef} type="password" placeholder="Ingresa tu nueva contraseña" autoComplete="off" required />
+                  <Form.Control ref={passwordRef} type="password" placeholder="Ingresa tu nueva contraseña" autoComplete="off" />
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formPassword">
                   <Form.Label> Confirmación de contraseña </Form.Label>
-                  <Form.Control ref={confirmPasswordRef} type="password" placeholder="Confirma tu contraseña" autoComplete="off" required />
+                  <Form.Control ref={confirmPasswordRef} type="password" placeholder="Confirma tu contraseña" autoComplete="off" />
               </Form.Group>
               <Form.Group controlId="formFileSm" className="mb-3">
                  <Form.Label>Cambiar foto de perfil</Form.Label>
