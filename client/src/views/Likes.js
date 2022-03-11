@@ -51,7 +51,7 @@ function Likes(props) {
                 {movies && movies.map(movie => (
                     movie && <MovieCard
                         key={movie.id} 
-                        id={movie.id}
+                        id={movie.itemId}
                         image={ movie.poster_path} 
                         title={ movie.title }
                     />
