@@ -37,7 +37,7 @@ function Movies(props) {
             .then(response => setMovies(response.data.results))
             .then(() => setLoading(false))
             .catch(error => console.log(error));
-        }, 3000)
+        }, 500)
     };
     
     useEffect(() => getMovies(), []);
