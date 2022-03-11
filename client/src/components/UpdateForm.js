@@ -1,4 +1,4 @@
-import { Card, Form, Button, Alert} from 'react-bootstrap';
+import { Card, Form, Button, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext'
@@ -9,10 +9,12 @@ function UpdateForm() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const confirmPasswordRef = useRef();
+  const imgUrlRef = useRef();
 //const updatePic = useRef();
   const { currentUser, updateProfile } = useAuth();
   const navigate = useNavigate();
   const [ loading, setLoading ] = useState(false);
+
 
   async function handleSubmit(e){
     e.preventDefault();
@@ -21,11 +23,11 @@ function UpdateForm() {
     if(!passwordsMatch) {
       return setError('Passwords no coinciden!');
     }
-  
+
     try {
       setError('')
       setLoading(true)
-      await updateProfile(nameRef.current.value, emailRef.current.value, passwordRef.current.value);
+      await updateProfile(nameRef.current.value, emailRef.current.value, passwordRef.current.value, imgUrlRef.current.value);
       navigate('/profile')
     } catch (e) {
       setError('Error al actualizar: ' + e.message)
@@ -36,6 +38,7 @@ function UpdateForm() {
 
   return (
     <Card className="w-75 mx-auto my-5">
+
       <Card.Body>
           <h1 className="display-4 text-center my-3">Actualizar perfil</h1>
           { error && error !== '' && <Alert variant="danger">{ error }</Alert> }
@@ -58,7 +61,10 @@ function UpdateForm() {
                   <Form.Label> Confirmación de contraseña </Form.Label>
                   <Form.Control ref={confirmPasswordRef} type="password" placeholder="Confirma tu contraseña" autoComplete="off" required />
               </Form.Group>
-
+              <Form.Group controlId="formFileSm" className="mb-3">
+                 <Form.Label>Cambiar foto de perfil</Form.Label>
+                 <Form.Control ref={imgUrlRef} type="img" size="sm" />
+               </Form.Group>
               <Button className="w-100" variant="primary" type="submit" disabled={loading}>
                   Actualizar perfil
               </Button>
