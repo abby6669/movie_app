@@ -4,7 +4,7 @@ import { useAuth } from '../contexts/AuthContext';
 
 function Navegacion() {
   const { currentUser } = useAuth();
-
+console.log(currentUser);
   if (currentUser) {
     return (
       <Navbar bg="dark" variant="dark" sticky="top" className="d-flex align-items-end">
@@ -17,8 +17,8 @@ function Navegacion() {
               <Nav.Link as={Link} to="/likes">Mis likes</Nav.Link>
               <Nav.Link as={Link} to="/logout">Cerrar sesión</Nav.Link>
             </Nav>
-            <Form className="d-flex me-5">
-            {/* <h1 style={{color:'#CCC'}}>Bienvenid@ {currentUser}!</h1> */}
+              <Navbar.Brand className="ms-5" as={Link} to="/profile" style={{fontSize:'17px'}}>Accediste como: {currentUser.email} </Navbar.Brand>
+            <Form className="d-flex me-5" >
               <FormControl
                 type="search"
                 placeholder="Search"
