@@ -53,13 +53,14 @@ function AuthProvider({ children }) {
     setIsAuth(false)
   }
 
-  function updateProfile(name, email, password){
+  function updateProfile(name, email, password, imgUrl){
     const URL_UPDATE = `http://localhost:8080/api/v1/users/${currentUser.id}`;
     return axios
-      .post(URL_UPDATE, { name, email, password })
+      .put(URL_UPDATE, { name, email, password, imgUrl })
       .then(response => response.data.user)
       .catch(error => error.message);
   }
+
 
 const value = {
   currentUser,

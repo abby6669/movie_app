@@ -1,20 +1,46 @@
 import {Card, Button} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Foto from "./Perfil.jpeg";
-
+import UpdateForm from "./UpdateForm"
+import { useAuth } from '../contexts/AuthContext'
+import {useEffect, useState} from 'react'
+import axios from 'axios'
 
 export function ProfileCard() {
-    return (
+const { currentUser, updateProfile } = useAuth();
+const [profile, setProfile]=useState([])
+//const [loading, setLoading] = useState(false)
 
-      <Card className="mx-auto my-5" style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={Foto} alt="foto perfil" />
+
+  function getProfile(name, email, password, imgUrl) {
+
+    const URL_GET = `http://localhost:8080/api/v1/users/${currentUser.id}`;
+    return axios.get(URL_GET)
+      .then(response => {setProfile(response.data.user)})
+      .catch(error => error.message);
+      console.log(profile)
+  }
+  useEffect(() => getProfile(), []);
+  // async function profileUpdate(){
+  //   try {
+  //     await getProfile(name, email, password);
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }
+// {profile.name}
+// {profile.email}
+    return (
+      <Card className="mx-auto my-5" style={{ width: '25rem' }}>
+        <Card.Img variant="top" src={profile.imgUrl} alt="foto perfil" />
         <Card.Body>
-          <Card.Title>John Miller</Card.Title>
+          <Card.Title> Nombre de usuario: {profile.name}</Card.Title>
           <Card.Text>
-            <ul>
-                <li>miller@gmail.com</li>
-                <li>Comedia</li>
-            </ul>
+
+              <ul>
+                <li> Correo: {profile.email}</li>
+                <li> Descripción: ⭐</li>
+              </ul>
           </Card.Text>
           <Button className="w-100" variant="primary" as={Link} to="/update-profile">Actualizar Perfil</Button>
         </Card.Body>
