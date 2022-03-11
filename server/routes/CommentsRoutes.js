@@ -5,7 +5,7 @@ const { CommentsController } = require('../controllers');
 // URLS Comments
 
 //Read all comments - POST
-router.get('/', CommentsController.readComments);
+router.get('/:itemId', CommentsController.readComments);
 
 //Read one comment - POST
 router.get('/:id', CommentsController.readComment);
