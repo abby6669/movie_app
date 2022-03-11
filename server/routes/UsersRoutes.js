@@ -16,7 +16,7 @@ router.get('/', UsersController.findAll);
 router.get('/:id', UsersController.findById);
 
 // Actualizar - PUT /:id
-router.put(':/id', UsersController.findByIdAndUpdate);
+router.put('/:id', UsersController.findByIdAndUpdate);
 
 // Borrar - DELETE /:id
 router.delete('/:id', UsersController.findByIdAndDelete);

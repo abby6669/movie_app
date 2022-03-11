@@ -57,20 +57,23 @@ const findById = async (req, res) => {
           .send({ message: 'Error al traer usuario!', error: err.message });
     };
 }
-// No SALE REVISAAAAR!!!
+// Esta ya se la saben!
 const findByIdAndUpdate = async (req, res) => {
+  const { name, email, password, imgUrl } = req.body
+  const { id } = req.params;
+
     try{
-        const { id } = req.params;
-        const updatedUser = await UsersModel.findByIdAndUpdate(id)
-        if (!updatedUser || !id) {
+        const updatedUser = await UsersModel.findById(id)
+        if ( !updatedUser.id) {
             return res.status(404).send({ message: 'Usuario no encontrado' });
         }
-        return res.status(200).send({ message: 'Usuario actualizado!', updatedUser });
-    } catch (err) {
-        return res
-            .status(500)
-            .send({ message: 'Error al actualizar usuario!', error: err.message });
-    };
+        const user = await UsersModel.findByIdAndUpdate(id, {name, email, password, imgUrl});
+        return res.status(200).send({ message: 'Usuario actualizado!', user: user });
+     } catch (err) {
+         return res
+             .status(500)
+             .send({ message: 'Error al actualizar usuario!', error: err.message });
+     };
 }
 
 const findByIdAndDelete = async (req, res) => {
