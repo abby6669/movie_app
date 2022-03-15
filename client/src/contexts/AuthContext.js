@@ -12,7 +12,7 @@ function AuthProvider({ children }) {
   const [ token, setToken ] = useState(localStorage.getItem('token') || null);
   const [ currentUser, setCurrentUser ] = useState(null);
   const [ isAuth, setIsAuth ] = useState(false);
-
+ console.log(currentUser);
   useEffect(() => {
     const tokenCookie = localStorage.getItem('token');
     if(tokenCookie){

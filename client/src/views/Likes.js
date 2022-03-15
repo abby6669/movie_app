@@ -16,7 +16,7 @@ function Likes(props) {
     const getMovies = () => {
         setLoading(true)
         setTimeout(() => {
-            const URL_TMDB = `http://localhost:8080/api/v1/likes/${currentUser.id}`; 
+            const URL_TMDB = `http://localhost:8080/api/v1/likes/${currentUser.id}`;
             console.log('' + URL_TMDB)
             axios
             .get(URL_TMDB)
@@ -25,14 +25,13 @@ function Likes(props) {
             .catch(error => console.log(error));
         }, 3000)
     };
-    
+
     useEffect(() => getMovies(), []);
 
     if (loading) {
         return (
             <>
-                <Navegacion />  
-                <CarouselHeader />               
+                <Navegacion />
                     <div className="d-flex justify-content-center p-5">
                         <Spinner className="m-5" animation="border" variant="primary" role="status" size="lg" />
                     </div>
@@ -45,20 +44,20 @@ function Likes(props) {
     return (
         <>
         <Navegacion />
-        <CarouselHeader />
+
             <h2> Se encontraron {movies.length} peliculas </h2>
             <div className="movies-container">
                 {movies && movies.map(movie => (
                     movie && <MovieCard
-                        key={movie.id} 
+                        key={movie.id}
                         id={movie.itemId}
-                        image={ movie.poster_path} 
+                        image={ movie.poster_path}
                         title={ movie.title }
                     />
                 ))}
             </div>
         <Footer />
-        </> 
+        </>
     );
 }
 
