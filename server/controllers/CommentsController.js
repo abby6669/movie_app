@@ -1,18 +1,18 @@
-const res = require('express/lib/response');
+ const res = require('express/lib/response');
 //const jwt = require('jsonwebtoken');
 const { CommentsModel } = require('../models');
 
 const createComment = async (req, res) => {
-  const { itemId, userId, content } = req.body
+  const { itemId, userId, content, userName } = req.body
   if (!itemId || !userId || !content){
     return res.status(400).send({ message: 'Para crear un comentario necesitas un itemId, userId y content' });
   }
   try{
-    const newBody = { itemId, userId, content }
+    const newBody = { itemId, userId, content, userName }
     const newComment = await CommentsModel.create(newBody)
     if (!newComment) {
       return res.status(400).send({ message:'Error al crear comentario' })
-    } 
+    }
     return res.status(201).send({ message: 'Has creado un comentario', newComment })
   } catch (err) {
       return res
