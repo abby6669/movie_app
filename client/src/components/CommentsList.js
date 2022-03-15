@@ -13,7 +13,7 @@ function CommentsList(props) {
 
   const fetchComments = () => {
     setLoading(true)
-    const URL_API = `http://localhost:8080/api/v1/comments/${id}`; 
+    const URL_API = `http://localhost:8080/api/v1/comments/${id}`;
     console.log('' + URL_API)
     axios
     .get(URL_API)
@@ -32,14 +32,13 @@ function CommentsList(props) {
         </div>
         </>
     )
-  };
-
-  return (
+  } return (
     <div style={{ marginBottom: '10em' }}>
       <h3 className="display-5 my-5 ms-5">Comentarios:</h3>
       {currentCommentsList && currentCommentsList.map(comment => (
           comment && <CommentCard
             user={ comment.userId }
+            userName={ comment.userName }
             content={ comment.content }
             createdAt={ comment.createdAt }
             />
