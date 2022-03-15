@@ -5,13 +5,13 @@ import PostComment from '../components/PostComment'
 import CommentsList from '../components/CommentsList'
 
 function IndividualMovie() {
-  
+
   return (
     <>
     <Navbar />
     <MovieInfo />
-    <PostComment />
     <CommentsList />
+    <PostComment />
     <Footer />
     </>
   );
