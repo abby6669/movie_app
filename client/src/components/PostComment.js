@@ -1,19 +1,28 @@
 import axios from 'axios';
 import { useRef, useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
-import { useParams, useNavigate } from 'react-router-dom'
+import { Form, Button, Alert } from 'react-bootstrap';
+import { useParams } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 
-
 function CommentCard(props) {
+  const {fetchComments} = props
   const { currentUser, token } = useAuth();
   const [loading, setLoading] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('');
   const commentRef = useRef();
   const { id } = useParams();
-  const navigate = useNavigate();
+
+  function handleReset() {
+    commentRef.current.value = ''
+    setErrorMsg('')
+    setLoading(false)
+  }
 
   function handleComment(e) {
     e.preventDefault();
+    if (!commentRef.current.value) {
+      return setErrorMsg('Tu comentario no puede estar vacío!')
+    }  
 
     const headers = {'Authorization': `Bearer ${token}`}
     const URL_COMMENT = 'http://localhost:8080/api/v1/comments'
@@ -25,8 +34,8 @@ function CommentCard(props) {
     console.log(newCommentBody)
     return axios
     .post(URL_COMMENT, newCommentBody, {headers})
-    .then(() => setLoading(false))
-    .then(navigate(`/movies/${id}`+1-1))
+    .then(() => handleReset())
+    .then(() => fetchComments())
     .catch(error => error.message);
 }
 
@@ -37,6 +46,7 @@ function CommentCard(props) {
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Control ref={commentRef} as="textarea" rows={3} />
           </Form.Group>
+          {errorMsg && <Alert variant="danger">{errorMsg}</Alert>}          
           <Button type="submit"  disabled={loading}>Enviar comentario</Button>
         </Form>
     </>
