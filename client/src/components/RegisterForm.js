@@ -17,6 +17,11 @@ function RegisterForm() {
       async function handleSubmit(e){
         e.preventDefault();
 
+        const inputValuesAreEmpty = emailRef.current.value === '' || passwordRef.current.value === '';
+        if(inputValuesAreEmpty) {
+          return setError('Por favor ingresa un email y un password');
+        }
+
         const passwordsMatch = passwordRef.current.value === confirmPasswordRef.current.value;
         if(!passwordsMatch) {
           return setError('Passwords no coinciden!');

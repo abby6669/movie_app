@@ -16,6 +16,11 @@ function Login() {
   async function handleSubmit(e){
     e.preventDefault();
 
+    const inputValuesAreEmpty = emailRef.current.value === '' || passwordRef.current.value === '';
+        if(inputValuesAreEmpty) {
+          return setError('Por favor ingresa un email y un password');
+    }
+
     try {
       setError('')
       setLoading(true)
@@ -37,7 +42,7 @@ function Login() {
       <Navbar />
       <Card className="w-75 mx-auto mt-5">
         <Card.Body>
-          <h1 className="display-4 text-center my-3">Log In</h1>
+          <h1 className="display-4 text-center my-3">LogIn</h1>
           { error && error !== '' && <Alert variant="danger">{ error }</Alert> }
           <Form onSubmit={ handleSubmit }>
             <Form.Group className="mb-3" controlId="formEmail">

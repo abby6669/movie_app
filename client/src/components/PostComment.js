@@ -4,7 +4,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import { useParams } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 
-function CommentCard(props) {
+function PostComment(props) {
   const {fetchComments} = props
   const { currentUser, token } = useAuth();
   const [loading, setLoading] = useState(false)
@@ -53,4 +53,4 @@ function CommentCard(props) {
   )
 }
 
-export default CommentCard
+export default PostComment
