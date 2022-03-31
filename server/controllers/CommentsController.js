@@ -3,12 +3,12 @@
 const { CommentsModel } = require('../models');
 
 const createComment = async (req, res) => {
-  const { itemId, userId, content, userName } = req.body
+  const { itemId, userId, content } = req.body
   if (!itemId || !userId || !content){
     return res.status(400).send({ message: 'Para crear un comentario necesitas un itemId, userId y content' });
   }
   try{
-    const newBody = { itemId, userId, content, userName }
+    const newBody = { itemId, userId, content }
     const newComment = await CommentsModel.create(newBody)
     if (!newComment) {
       return res.status(400).send({ message:'Error al crear comentario' })
