@@ -1,0 +1,39 @@
+.Title {
+  font-size:40px;
+  text-align: center;
+  display: block;
+  margin-top:12%;
+}
+.Label{
+  font-size:30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formLabel {
+  font-size:20px;
+  color: rgb(214, 33, 20);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius:6px;
+  margin-left:36%;
+  margin-right:36%;
+  background-color: rgb(200, 195, 195)
+}
+
+.input{
+  font-size:25px;
+  border-radius:6px;
+  font-family: sans-serif;
+}
+
+
+.button{
+  font-size:25px;
+  display: flex;
+  align-items: center;
+  border-radius:12px;
+  background-color: rgb(54, 163, 219);
+}
