@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import {AuthProvider} from './contexts/AuthContext'
 import Login from './views/Login';
+import Logout from './views/Logout';
 import Movies from './views/Movies';
 import Profile from './views/Profile';
 import Register from './views/Register';
@@ -22,6 +23,7 @@ function App() {
             <Route exact path="/update-profile" element={ <UpdateProfile /> }/>
             <Route path="/register" element={ <Register /> } />
             <Route path="/login" element={ <Login /> } />
+            <Route path="/logout" element={ <Logout /> } />
           </Routes>
       </Router>
     </AuthProvider>

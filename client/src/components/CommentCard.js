@@ -13,10 +13,8 @@ function CommentCard(props) {
       .then(response => setProfile(response.data.user))
       .catch(error => error.message);
   }
-
+  // eslint-disable-next-line
   useEffect(() => getProfile(), []);
-
-  console.log(profile)
 
   return (
     <Card className="w-75 mx-auto mt-5">

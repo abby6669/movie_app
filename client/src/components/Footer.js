@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Foto from "./logo.png";
+import Logo from "./images/logo.png";
 
 const Footer = () => <footer className="page-footer font-small blue pt-4 text-light">
     <div className="container-fluid text-center text-md-left ">
@@ -15,23 +15,20 @@ const Footer = () => <footer className="page-footer font-small blue pt-4 text-li
             <div className="col-md-3 mb-md-0 mb-3">
                 <h5 className="text-uppercase">Páginas</h5>
                 <ul className="list-unstyled">
-                    <li as={Link} to="/"><a className="text-light" >Home</a></li>
-                    <li><a className="text-light" as={Link} to="/profile" >Perfil</a></li>
-                    <li><a className="text-light" as={Link} to="/login">Login</a></li>
-                    <li><a className="text-light" as={Link} to="/register" >Register</a></li>
+                    <li className="text-light" as={Link} to="/">Home</li>
+                    <li className="text-light" as={Link} to="/profile">Perfil</li>
+                    <li className="text-light" as={Link} to="/login">Login</li>
+                    <li className="text-light" as={Link} to="/register">Register</li>
                 </ul>
             </div>
-
             <div className="col-md-3 mb-md-0 mb-3">
-                <img className="rotate" src={Foto} alt=""/>
+                <img className="rotate" src={Logo} alt="Cámara girando"/>
             </div>
         </div>
     </div>
-
-    <div className="footer-copyright text-center py-3">© 2022 Copyright:
-        <a href="#"> Devf G7</a>
+    <div className="footer-copyright text-center py-3">
+        © 2022 Copyright: Devf G7
     </div>
-
 </footer>
 
 export default Footer

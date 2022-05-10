@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-// import { useAuth } from '../contexts/AuthContext';
+import { useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
 import CommentCard from './CommentCard';
 
 function CommentsList(props) {
   const {fetchComments, comments, loading} = props
 
+  // eslint-disable-next-line
   useEffect(() => fetchComments(), []);
 
   if (loading) {
@@ -17,16 +16,22 @@ function CommentsList(props) {
         </div>
         </>
     )
-  } return (
-    <div style={{ marginBottom: '10em' }}>
-      <h3 className="display-5 my-5 ms-5">Comentarios:</h3>
-      {comments && comments.map(comment => (
-          comment && <CommentCard
+  } 
+  
+  return (
+    <div className="mb-5">
+      <h3 className="display-5 text-center">Comentarios:</h3>
+
+      {comments.length > 0
+      ? comments.map(comment => (
+          comment && <CommentCard 
+            key={comment.userId}
             userId={ comment.userId }
             content={ comment.content }
             createdAt={ comment.createdAt }
             />
         ))
+      : <h3 className="lead text-center">Sé el primero en dejar un comentario</h3>
       }
     </div>
   )

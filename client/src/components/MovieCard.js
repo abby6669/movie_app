@@ -24,7 +24,7 @@ function MovieCard(props) {
     }
 
     return (
-        <Card className="movie-card d-inline-block">
+        <Card className="w-25 m-4 d-inline-block">
             <Link to={`/movies/${id}`}>
                 <Card.Img src={`https://image.tmdb.org/t/p/original/${image}`}/>
             </Link>

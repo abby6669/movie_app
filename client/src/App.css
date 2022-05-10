@@ -24,26 +24,6 @@ footer {
     100%{background-position:0% 88%} 
 }
 
-.movie-card {
-    width: 18rem; 
-    margin: 2rem;
-}
-
-.movies-container {
-    /* background-color: red; */
-    padding-left: 3rem;
-    padding-right: 3rem;
-}
-
-/* #body {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;    
-} */
-
 .rotate {
     width: 200px;
     height: 200px;

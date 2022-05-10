@@ -40,16 +40,16 @@ function PostComment(props) {
 }
 
   return (
-      <>
-        <h3 className="display-5 my-5 ms-5">Deja tu comentario:</h3>
-        <Form className="ms-5 w-50 mb-5" onSubmit={handleComment}>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Control ref={commentRef} as="textarea" rows={3} />
+      <div className="d-flex align-items-center flex-column mb-5">
+        <h3 className="display-5 mb-5">Deja tu comentario:</h3>
+        <Form className="w-50 mb-5" onSubmit={handleComment}>
+          <Form.Group className="mb-3 w-100" controlId="exampleForm.ControlTextarea1">
+            <Form.Control ref={commentRef} as="textarea" rows={3}/>
           </Form.Group>
           {errorMsg && <Alert variant="danger">{errorMsg}</Alert>}          
-          <Button type="submit"  disabled={loading}>Enviar comentario</Button>
+          <Button type="submit" className="w-100 p-2" disabled={loading}>Enviar comentario</Button>
         </Form>
-    </>
+    </div>
   )
 }
 

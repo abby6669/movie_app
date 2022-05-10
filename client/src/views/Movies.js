@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useAuth } from '../contexts/AuthContext';
 import axios from 'axios';
 import { Spinner } from 'react-bootstrap';
 import Navegacion from '../components/Navbar';
@@ -40,6 +39,7 @@ function Movies(props) {
         }, 500)
     };
     
+    // eslint-disable-next-line
     useEffect(() => getMovies(), []);
 
     if (loading) {
@@ -47,35 +47,35 @@ function Movies(props) {
             <>
                 <Navegacion />  
                 <CarouselHeader />               
-                    <div className="d-flex justify-content-center p-5">
-                        <Spinner className="m-5" animation="border" variant="primary" role="status" size="lg" />
-                    </div>
-                    <div className="movies-pagination d-flex justify-content-center">
-                        <Pagination>{paginationItems}</Pagination>
-                    </div>
+                <div className="d-flex justify-content-center p-5">
+                    <Spinner className="m-5" animation="border" variant="primary" role="status" size="lg" />
+                </div>
+                <div className="movies-pagination d-flex justify-content-center">
+                    <Pagination>{paginationItems}</Pagination>
+                </div>
                 <Footer />
             </>
         );
     }
-    console.log(movies)
+
     return (
         <>
         <Navegacion />
         <CarouselHeader />
-            <h2> Se encontraron {movies.length} peliculas </h2>
-            <div className="movies-container">
-                {movies && movies.map(movie => (
-                    movie && <MovieCard
-                        key={movie.id} 
-                        id={movie.id}
-                        image={ movie.poster_path} 
-                        title={ movie.title }
-                    />
-                ))}
-            </div>
-            <div className="movies-pagination d-flex justify-content-center">
-                <Pagination>{paginationItems}</Pagination>
-            </div>
+        <h2 className="display-5 my-5 text-center">Se encontraron {movies.length} películas </h2>
+        <div className="w-75 mx-auto">
+            {movies && movies.map(movie => (
+                movie && <MovieCard
+                    key={movie.id} 
+                    id={movie.id}
+                    image={ movie.poster_path} 
+                    title={ movie.title }
+                />
+            ))}
+        </div>
+        <div className="movies-pagination d-flex justify-content-center mb-5">
+            <Pagination>{paginationItems}</Pagination>
+        </div>
         <Footer />
         </> 
     );

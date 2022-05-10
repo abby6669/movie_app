@@ -1,8 +1,7 @@
-import {Carousel} from 'react-bootstrap/'
- import Portada from './Images/Portada.png'
- import SegundaPortada from './Images/SegundaPortada.png'
- import TerceraPortada from './Images/TerceraPortada.png'
- import Venom from './Images/Venom.jpg'
+import {Carousel} from 'react-bootstrap'
+ import Portada from './images/Portada.png'
+ import SegundaPortada from './images/SegundaPortada.png'
+ import TerceraPortada from './images/TerceraPortada.png'
  
 function CarouselHeader() {
   return (
@@ -21,6 +20,7 @@ function CarouselHeader() {
         <img
           className="d-block w-100"
           src={SegundaPortada}
+          alt="Imagen de carrusel"
         />
 
         <Carousel.Caption>

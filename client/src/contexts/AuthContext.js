@@ -11,15 +11,13 @@ function useAuth() {
 function AuthProvider({ children }) {
   const [ token, setToken ] = useState(localStorage.getItem('token') || null);
   const [ currentUser, setCurrentUser ] = useState(null);
-  const [ isAuth, setIsAuth ] = useState(false);
- console.log(currentUser);
+
   useEffect(() => {
     const tokenCookie = localStorage.getItem('token');
     if(tokenCookie){
       setToken(tokenCookie)
       const decoded = decode(tokenCookie)
       setCurrentUser(decoded)
-      setIsAuth(true)
     }
     return tokenCookie;
   }, [])
@@ -41,7 +39,6 @@ function AuthProvider({ children }) {
         localStorage.setItem('token', response.data.token)
         const decoded = decode(response.data.token)
         setCurrentUser(decoded)
-        setIsAuth(true)
         return decoded;
       })
       .catch(error => error.message);
@@ -50,7 +47,6 @@ function AuthProvider({ children }) {
   function logout(){
     localStorage.removeItem('token')
     setCurrentUser(null)
-    setIsAuth(false)
   }
 
   function updateProfile(name, email, password, imgUrl){

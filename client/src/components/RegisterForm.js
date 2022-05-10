@@ -60,7 +60,7 @@ function RegisterForm() {
                       <Form.Control ref={passwordRef} type="password" placeholder="Ingresa tu contraseña" autoComplete="off" required />
                   </Form.Group>
 
-                  <Form.Group className="mb-3" controlId="formPassword">
+                  <Form.Group className="mb-3" controlId="formConfirmPassword">
                       <Form.Label> Confirmación de contraseña </Form.Label>
                       <Form.Control ref={confirmPasswordRef} type="password" placeholder="Confirma tu contraseña" autoComplete="off" required />
                   </Form.Group>

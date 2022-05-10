@@ -17,8 +17,9 @@ const [profile, setProfile]=useState([])
       .then(response => {setProfile(response.data.user)})
       .catch(error => error.message);
   }
-  useEffect(() => getProfile(), []);
 
+  // eslint-disable-next-line
+  useEffect(() => getProfile(), []);
 
     return (
       <Card className="mx-auto my-5" style={{ width: '25rem' }}>

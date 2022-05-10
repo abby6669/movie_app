@@ -3,7 +3,6 @@ import { useAuth } from '../contexts/AuthContext';
 import axios from 'axios';
 import { Spinner } from 'react-bootstrap';
 import Navegacion from '../components/Navbar';
-import CarouselHeader from '../components/CarouselHeader'
 import MovieCard from '../components/MovieCard';
 import Footer from '../components/Footer';
 
@@ -26,6 +25,7 @@ function Likes(props) {
         }, 3000)
     };
 
+    // eslint-disable-next-line
     useEffect(() => getMovies(), []);
 
     if (loading) {
@@ -39,13 +39,12 @@ function Likes(props) {
             </>
         );
     }
-    console.log(movies)
-    console.log(currentUser)
+
     return (
         <>
         <Navegacion />
 
-            <h2> Se encontraron {movies.length} peliculas </h2>
+            <h2 className="display-5 my-5 text-center"> Se encontraron {movies.length} peliculas </h2>
             <div className="movies-container">
                 {movies && movies.map(movie => (
                     movie && <MovieCard
